@@ -12,13 +12,15 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 public class FinJuego extends JPanel {
-	public FinJuego() {
+	private Ventana ventana;
+	public FinJuego(Ventana v) {
+		this.ventana = v;
 		setLayout(null);
 
 		JLabel lblImagen = new JLabel("");
 		try {
-			BufferedImage imagen = ImageIO.read(new File("./resultado.jpg"));
-			Image enIcono = imagen.getScaledInstance(200, 100, Image.SCALE_SMOOTH);
+			BufferedImage imagen = ImageIO.read(new File("./imagenes/fin.jpg"));
+			Image enIcono = imagen.getScaledInstance(700, 500, Image.SCALE_SMOOTH);
 			lblImagen.setIcon(new ImageIcon(enIcono));
 		} catch (IOException e1) {
 			e1.printStackTrace();
