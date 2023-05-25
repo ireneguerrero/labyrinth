@@ -1,9 +1,11 @@
 package labyrinth;
 
+import interfaces.Ventana;
+
 public class Main {
 
 	public static void main(String[] args) {
-		System.out.println("ñññ");
+		Ventana v=new Ventana();
 
 	}
 
