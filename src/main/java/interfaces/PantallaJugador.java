@@ -80,7 +80,7 @@ public class PantallaJugador extends JPanel {
                 try {
                 	HashMap<String, Object> columnas = new HashMap<>();
                 	columnas.put("password", password);
-                	columnas.put("usuario", usuario);
+                	columnas.put("nombre", usuario);
                 	try {
                 	    DAO.insertar("usuario", columnas);
                 	    JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
