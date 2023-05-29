@@ -57,6 +57,7 @@ public class Historia extends JPanel {
 		add(contenedorTexto, BorderLayout.CENTER);
 		
 		final JButton continuarButton = new JButton("Continuar");
+		continuarButton.setBackground(new Color(255, 215, 0));
 		continuarButton.setBounds(129, 417, 446, 25);
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
