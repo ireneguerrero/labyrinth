@@ -21,7 +21,7 @@ public class Historia extends JPanel {
 	private JTextArea areaTexto;
 	private static Ventana ventana;
 
-	private String[] historia = { //acortar texto
+	private String[] historia = { // acortar texto
 			"Nuestro querido capitán de los Sombreros de Paja, Luffy",
 			"Ha caído en manos de un usuario de la fruta Rabi Rabi no Mi",
 			"Esta fruta lleva a los afectados a un laberinto infernal",
@@ -31,12 +31,9 @@ public class Historia extends JPanel {
 			"Luffy tendrá que volver a pasar por las batallas que más le costaron para poder salir.",
 			"No tendrá la ayuda de sus preciados Nakamas por el camino.",
 			"¿Podrá Luffy superar los laberintos y llegar al final?",
-			"¿O se quedará atrapado para siempre en los laberintos y no podrá cumplir su sueño?",
-			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?",
-			"¿O tienes miedo?",
-			"¿Preparado?",
-			"Pulsa continuar y demuestra de qué eres capaz."
-			};
+			"¿O se quedará atrapado para siempre en ellos y no podrá cumplir su sueño?",
+			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?", "¿O tienes miedo?",
+			"¿Preparado?", "Pulsa continuar y demuestra de qué eres capaz." };
 	private int indiceParteHistoria = 0;
 
 	public Historia(Ventana v) {
@@ -59,7 +56,7 @@ public class Historia extends JPanel {
 		contenedorTexto.add(historiaLabel);
 
 		add(contenedorTexto, BorderLayout.CENTER);
-		
+
 		final JButton continuarButton = new JButton("Continuar");
 		continuarButton.setBackground(new Color(255, 215, 0));
 		continuarButton.setBounds(129, 417, 446, 25);
@@ -78,12 +75,12 @@ public class Historia extends JPanel {
 			@Override
 			public void run() {
 				mostrarHistoria(historiaLabel);
-				 SwingUtilities.invokeLater(new Runnable() {
-			            @Override
-			            public void run() {
-			                continuarButton.setEnabled(true); // Habilitar el botón Continuar después de mostrar la historia
-			            }
-			        });
+				SwingUtilities.invokeLater(new Runnable() {
+					@Override
+					public void run() {
+						continuarButton.setEnabled(true); // Habilitar el botón Continuar después de mostrar la historia
+					}
+				});
 			}
 		});
 		historiaThread.start();
@@ -123,10 +120,10 @@ public class Historia extends JPanel {
 			}
 		}
 
-		textoVisible.append(" "); 
+		textoVisible.append(" ");
 		historiaLabel.setText(textoVisible.toString());
 		try {
-			Thread.sleep(100); 
+			Thread.sleep(100);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

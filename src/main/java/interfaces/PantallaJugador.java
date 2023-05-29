@@ -34,71 +34,82 @@ public class PantallaJugador extends JPanel {
 	private Ventana ventana;
 	private JTextField textNombre;
 	private JPasswordField passwordField;
-	
+
 	public PantallaJugador(Ventana v) {
-		this.ventana=v;
+		this.ventana = v;
 		setLayout(null);
-		
+
 		JLabel lblTitulo = new JLabel("Labyrinth");
 		lblTitulo.setBounds(282, 30, 135, 36);
 		lblTitulo.setHorizontalAlignment(SwingConstants.CENTER);
 		lblTitulo.setForeground(new Color(255, 255, 255));
 		lblTitulo.setFont(new Font("Ink Free", Font.BOLD | Font.ITALIC, 30));
 		add(lblTitulo);
-		
+
 		JLabel lblUsuario = new JLabel("Nombre");
 		lblUsuario.setBounds(314, 133, 62, 21);
 		lblUsuario.setHorizontalAlignment(SwingConstants.CENTER);
 		lblUsuario.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
 		lblUsuario.setForeground(new Color(255, 255, 255));
 		add(lblUsuario);
-		
+
 		textNombre = new JTextField();
 		textNombre.setBounds(254, 185, 185, 19);
 		add(textNombre);
 		textNombre.setColumns(10);
-		
+
 		JLabel lblContraseña = new JLabel("Contraseña");
 		lblContraseña.setBounds(301, 242, 90, 21);
 		lblContraseña.setHorizontalAlignment(SwingConstants.CENTER);
 		lblContraseña.setForeground(Color.WHITE);
 		lblContraseña.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
 		add(lblContraseña);
-		
+
 		passwordField = new JPasswordField();
 		passwordField.setBounds(254, 287, 185, 19);
 		add(passwordField);
-		
+
 		JButton btnEmpezar = new JButton("Empezar");
+		btnEmpezar.setBackground(new Color(255, 215, 0));
+		btnEmpezar.setForeground(new Color(230, 0, 0));
 		btnEmpezar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String usuario = textNombre.getText();
-                String password = new String(passwordField.getPassword());
-                System.out.println(usuario + " : " + password);
-                
-                try {
-                	HashMap<String, Object> columnas = new HashMap<>();
-                	columnas.put("password", password);
-                	columnas.put("nombre", usuario);
-                	try {
-                	    DAO.insertar("usuario", columnas);
-                	    JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
-                	    ventana.cambiarAPantalla(Historia.class);
-                	} catch (SQLException e1) {
-                	    e1.printStackTrace();
-                	}
+				String password = new String(passwordField.getPassword());
+
+				if (usuario.isEmpty() || password.isEmpty()) {
+					JOptionPane.showMessageDialog(ventana, "Debes ingresar un nombre de usuario y una contraseña",
+							"Error", JOptionPane.ERROR_MESSAGE);
+					return; // Detener la ejecución si los campos están vacíos
+				}
+
+				System.out.println(usuario + " : " + password);
+
+				try {
+					HashMap<String, Object> columnas = new HashMap<>();
+					columnas.put("nombre", usuario);
+					columnas.put("password", password);
+
+					try {
+						DAO.insertar("usuario", columnas);
+						JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito",
+								JOptionPane.INFORMATION_MESSAGE);
+						ventana.cambiarAPantalla(Historia.class);
+					} catch (SQLException e1) {
+						e1.printStackTrace();
+					}
 				} catch (HeadlessException e1) {
 					e1.printStackTrace();
 				}
-                ventana.cambiarAPantalla(Historia.class);
+
+				ventana.cambiarAPantalla(Historia.class);
 			}
 		});
 		btnEmpezar.setBounds(282, 371, 135, 29);
 		btnEmpezar.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
 		add(btnEmpezar);
-	
-		
+
 		JLabel lblFondo = new JLabel("");
 		try {
 			BufferedImage imagen = ImageIO.read(new File("./imagenes/fondo1.png"));
@@ -109,6 +120,6 @@ public class PantallaJugador extends JPanel {
 		}
 		lblFondo.setBounds(0, 0, 700, 500);
 		add(lblFondo);
-		
+
 	}
 }
