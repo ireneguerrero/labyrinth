@@ -40,21 +40,24 @@ public class Historia extends JPanel {
 		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
 
-		JPanel contenedorTexto = new JPanel(new BorderLayout());
+		JPanel contenedorTexto = new JPanel();
 		contenedorTexto.setBackground(Color.BLACK);
 
 		final JLabel historiaLabel = new JLabel();
+		historiaLabel.setBounds(2, 2, 698, 453);
 		historiaLabel.setFont(new Font("Arial", Font.PLAIN, 16));
 		historiaLabel.setForeground(Color.WHITE);
 		historiaLabel.setHorizontalAlignment(SwingConstants.CENTER);
 
 		Border borde = BorderFactory.createLineBorder(Color.RED, 2);
 		contenedorTexto.setBorder(borde);
-		contenedorTexto.add(historiaLabel, BorderLayout.CENTER);
+		contenedorTexto.setLayout(null);
+		contenedorTexto.add(historiaLabel);
 
 		add(contenedorTexto, BorderLayout.CENTER);
 		
 		final JButton continuarButton = new JButton("Continuar");
+		continuarButton.setBounds(126, 426, 446, 25);
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -63,7 +66,7 @@ public class Historia extends JPanel {
 		});
 		continuarButton.setForeground(new Color(255, 0, 0));
 		continuarButton.setFont(new Font("Tahoma", Font.BOLD, 13));
-		contenedorTexto.add(continuarButton, BorderLayout.SOUTH);
+		contenedorTexto.add(continuarButton);
 
 		// Crear y iniciar un hilo para mostrar la historia gradualmente
 		Thread historiaThread = new Thread(new Runnable() {
