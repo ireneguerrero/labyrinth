@@ -16,6 +16,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Lvl1 extends JPanel {
 	private Ventana ventana;
@@ -25,7 +27,12 @@ public class Lvl1 extends JPanel {
 		setLayout(null);
 
 		JButton btnSiguiente = new JButton("Siguiente nivel");
-		btnSiguiente.setHorizontalAlignment(SwingConstants.LEFT);
+		btnSiguiente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarAPantalla(Lvl2.class);
+			}
+		});
 		btnSiguiente.setForeground(new Color(230, 0, 0));
 		btnSiguiente.setBounds(475, 385, 155, 45);
 		btnSiguiente.setBackground(new Color(255, 215, 0));

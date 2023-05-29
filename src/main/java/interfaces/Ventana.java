@@ -9,7 +9,7 @@ public class Ventana extends JFrame {
 		this.setTitle("Labyrinth"); // título de la ventana
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // si se cierra la ventana termina el programa
 		this.setLocationRelativeTo(null); // se pone la ventana centrada
-		this.setContentPane(new Lvl1(this));
+		this.setContentPane(new Lvl4(this));
 		this.setVisible(true); // tiene que ser la última línea del constructor, se hace visible la ventana
 	}
 	public void cambiarAPantalla(Class<?> clase) {
@@ -24,13 +24,13 @@ public class Ventana extends JFrame {
 			this.setContentPane(new Lvl1(this));
 		}
 		if (clase.equals(Lvl2.class)) {
-			this.setContentPane(new Lvl2());
+			this.setContentPane(new Lvl2(this));
 		}
 		if (clase.equals(Lvl3.class)) {
-			this.setContentPane(new Lvl3());
+			this.setContentPane(new Lvl3(this));
 		}
 		if (clase.equals(Lvl4.class)) {
-			this.setContentPane(new Lvl4());
+			this.setContentPane(new Lvl4(this));
 		}
 		if (clase.equals(FinJuego.class)) {
 			this.setContentPane(new FinJuego(this));
