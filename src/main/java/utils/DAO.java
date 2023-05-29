@@ -21,17 +21,16 @@ public class DAO {
 
 	private static Statement conectar() {
 		try {
-			BufferedReader lector = new BufferedReader(new FileReader("bdconfig.ini"));
+			BufferedReader lector = new BufferedReader(new FileReader("./bdconfig.ini"));
 			String ip = lector.readLine();
 			int puerto = Integer.parseInt(lector.readLine());
 			String nombreBD = lector.readLine();
 			String user = lector.readLine();
 			String password = lector.readLine();
 			lector.close();
-			// también se puede poner localhost:nº del puerto/el nombre de la base de datos
 			conexion = DriverManager.getConnection("jdbc:mysql://" + ip + ":" + puerto + "/" + nombreBD, user,
 					password);
-			return conexion.createStatement(); // siempre java.sql
+			return conexion.createStatement();
 		} catch (SQLException e) {
 			e.printStackTrace();
 			return null;

@@ -4,7 +4,10 @@ import javax.swing.JPanel;
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.GridBagLayout;
+import java.awt.HeadlessException;
 import java.awt.Image;
 import java.awt.BorderLayout;
 import java.awt.GridBagConstraints;
@@ -12,13 +15,20 @@ import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.HashMap;
 import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
+
+import utils.DAO;
+
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PantallaJugador extends JPanel {
 	private Ventana ventana;
@@ -59,10 +69,35 @@ public class PantallaJugador extends JPanel {
 		passwordField.setBounds(254, 287, 185, 19);
 		add(passwordField);
 		
-		JButton btnNewButton = new JButton("Empezar");
-		btnNewButton.setBounds(282, 371, 135, 29);
-		btnNewButton.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
-		add(btnNewButton);
+		JButton btnEmpezar = new JButton("Empezar");
+		btnEmpezar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String usuario = textNombre.getText();
+                String password = new String(passwordField.getPassword());
+                System.out.println(usuario + " : " + password);
+                
+                try {
+                	HashMap<String, Object> columnas = new HashMap<>();
+                	columnas.put("password", password);
+                	columnas.put("usuario", usuario);
+                	try {
+                	    DAO.insertar("usuario", columnas);
+                	    JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito", JOptionPane.INFORMATION_MESSAGE);
+                	    ventana.cambiarAPantalla(Historia.class);
+                	} catch (SQLException e1) {
+                	    e1.printStackTrace();
+                	}
+				} catch (HeadlessException e1) {
+					e1.printStackTrace();
+				}
+                ventana.cambiarAPantalla(Historia.class);
+			}
+		});
+		btnEmpezar.setBounds(282, 371, 135, 29);
+		btnEmpezar.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
+		add(btnEmpezar);
+	
 		
 		JLabel lblFondo = new JLabel("");
 		try {
