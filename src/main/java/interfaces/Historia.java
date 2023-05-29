@@ -22,17 +22,21 @@ public class Historia extends JPanel {
 	private static Ventana ventana;
 
 	private String[] historia = { //acortar texto
-			"El dia 2 de Abril, en  el planeta Tierra se abrio una brecha que liberó a seres de otra dimensión.",
-		/*	"Estos seres eran diferentes a todo lo que la humanidad había visto antes.",
-			"Había seres con formas inusuales y criaturas con habilidades sobrenaturales.",
-			"Todos estos seres compartían algo en común",
-			"Su lucha contra el patriarcado y el heterosexismo que dominaba el mundo humano.",
-			"Así nació \"The Breach\", un lugar seguro",
-			"Donde estos seres podían vivir juntos sin ser discriminados por su apariencia.",
-			"En este mundo encontrarás una gran variedad de personajes únicos y fascinantes.",
-			"A través de tus relaciones, aprenderá más sobre la aceptación de la diversidad sexual.",
-			"¿Estás liste para unirte a esta lucha por la igualdad y la aceptación en \"The Breach\"? ",
-			"¡Que comience el jeugo!"*/ };
+			"Nuestro querido capitán de los Sombreros de Paja, Luffy",
+			"Ha caído en manos de un usuario de la fruta Rabi Rabi no Mi",
+			"Esta fruta lleva a los afectados a un laberinto infernal",
+			"En el que tendrán que luchar con sus enemigos más fuertes para poder salir.",
+			"Como este usuario es benevolente, Luffy tendrá varias ayudas en el camino.",
+			"Pero no todo es de color rosa",
+			"Luffy tendrá que volver a pasar por las batallas que más le costaron para poder salir.",
+			"No tendrá la ayuda de sus preciados Nakamas por el camino.",
+			"¿Podrá Luffy superar los laberintos y llegar al final?",
+			"¿O se quedará atrapado para siempre en los laberintos y no podrá cumplir su sueño?",
+			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?",
+			"¿O tienes miedo?",
+			"¿Preparado?",
+			"Pulsa continuar y demuestra de qué eres capaz."
+			};
 	private int indiceParteHistoria = 0;
 
 	public Historia(Ventana v) {
