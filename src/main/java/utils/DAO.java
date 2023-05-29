@@ -137,12 +137,12 @@ public class DAO {
 				String nombreCl = (String) hscl.next();
 				Object valorColumna = cursor.getObject(cursor.findColumn(nombreCl));
 				Object valor = null;
-				System.out.println(nombreCl+" : "+valorColumna.getClass());
+				System.out.println(nombreCl + " : " + valorColumna.getClass());
 				if (valorColumna.getClass() == String.class) {
 					valor = (String) valorColumna;
 				} else if (valorColumna.getClass() == Integer.class) {
 					valor = (int) valorColumna;
-				}else if (valorColumna.getClass()== BigDecimal.class) {
+				} else if (valorColumna.getClass() == BigDecimal.class) {
 					valor = ((BigDecimal) valorColumna).intValue();
 				}
 				fila.add(valor);
