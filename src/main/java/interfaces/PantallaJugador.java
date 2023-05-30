@@ -76,40 +76,39 @@ public class PantallaJugador extends JPanel {
 		btnEmpezar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				String usuario = textNombre.getText();
 				try {
+					String usuario = textNombre.getText();
 					validarNombre();
-				} catch (NombreConNumerosException e2) {
-					e2.printStackTrace();
-				}
-				String password = new String(passwordField.getPassword());
 
-				if (usuario.isEmpty() || password.isEmpty()) {
-					JOptionPane.showMessageDialog(ventana, "Debes ingresar un nombre de usuario y una contraseña",
-							"Error", JOptionPane.ERROR_MESSAGE);
-					return; // Detener la ejecución si los campos están vacíos
-				}
-
-				System.out.println(usuario + " : " + password);
-
-				try {
-					HashMap<String, Object> columnas = new HashMap<>();
-					columnas.put("nombre", usuario);
-					columnas.put("password", password);
+					String password = new String(passwordField.getPassword());
+					if (usuario.isEmpty() || password.isEmpty()) {
+						JOptionPane.showMessageDialog(ventana, "Debes ingresar un nombre de usuario y una contraseña",
+								"Error", JOptionPane.ERROR_MESSAGE);
+						return; // Detener la ejecución si los campos están vacíos
+					}
+					System.out.println(usuario + " : " + password);
 
 					try {
-						DAO.insertar("usuario", columnas);
-						JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito",
-								JOptionPane.INFORMATION_MESSAGE);
-						ventana.cambiarAPantalla(Historia.class);
-					} catch (SQLException e1) {
+						HashMap<String, Object> columnas = new HashMap<>();
+						columnas.put("nombre", usuario);
+						columnas.put("password", password);
+						try {
+							DAO.insertar("usuario", columnas);
+							JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito",
+									JOptionPane.INFORMATION_MESSAGE);
+							ventana.cambiarAPantalla(Historia.class);
+						} catch (SQLException e1) {
+							e1.printStackTrace();
+						}
+					} catch (HeadlessException e1) {
 						e1.printStackTrace();
 					}
-				} catch (HeadlessException e1) {
-					e1.printStackTrace();
+					ventana.cambiarAPantalla(Historia.class);
+				} catch (NombreConNumerosException e2) {
+					e2.printStackTrace();
+					JOptionPane.showMessageDialog(ventana, "El nombre no debe contener números", "Error",
+							JOptionPane.ERROR_MESSAGE);
 				}
-
-				ventana.cambiarAPantalla(Historia.class);
 			}
 		});
 		btnEmpezar.setBounds(282, 371, 135, 29);
@@ -128,6 +127,7 @@ public class PantallaJugador extends JPanel {
 		add(lblFondo);
 
 	}
+
 	private void validarNombre() throws NombreConNumerosException {
 		String nombre = textNombre.getText();
 		if (nombre.matches(".*\\d.*")) {
