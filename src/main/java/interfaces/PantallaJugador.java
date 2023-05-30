@@ -21,6 +21,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+import exceptions.NombreConNumerosException;
 import utils.DAO;
 
 import javax.swing.JTextField;
@@ -76,6 +77,11 @@ public class PantallaJugador extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				String usuario = textNombre.getText();
+				try {
+					validarNombre();
+				} catch (NombreConNumerosException e2) {
+					e2.printStackTrace();
+				}
 				String password = new String(passwordField.getPassword());
 
 				if (usuario.isEmpty() || password.isEmpty()) {
@@ -121,5 +127,11 @@ public class PantallaJugador extends JPanel {
 		lblFondo.setBounds(0, 0, 700, 500);
 		add(lblFondo);
 
+	}
+	private void validarNombre() throws NombreConNumerosException {
+		String nombre = textNombre.getText();
+		if (nombre.matches(".*\\d.*")) {
+			throw new NombreConNumerosException("El nombre no debe contener números");
+		}
 	}
 }

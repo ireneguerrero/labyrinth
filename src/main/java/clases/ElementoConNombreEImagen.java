@@ -2,6 +2,9 @@ package clases;
 
 import java.awt.image.BufferedImage;
 
+import exceptions.NombreConNumerosException;
+
+
 public class ElementoConNombreEImagen {
 	private String nombre;
 	private BufferedImage imagen;
@@ -16,7 +19,13 @@ public class ElementoConNombreEImagen {
 		return nombre;
 	}
 
-	public void setNombre(String nombre) {
+	public void setNombre(String nombre) throws NombreConNumerosException {
+		String numeros = "0987654321";
+		for (short i = 0; i < nombre.length(); i++) {
+			if (numeros.contains("" + nombre.charAt(i))) {
+				throw new NombreConNumerosException("El nombre " + nombre + " no es válido porque tiene números");
+			}
+		}
 		this.nombre = nombre;
 	}
 
