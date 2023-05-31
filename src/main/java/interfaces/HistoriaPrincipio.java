@@ -8,21 +8,18 @@ import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.SwingConstants;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
-public class Historia extends JPanel {
+public class HistoriaPrincipio extends JPanel {
 	private JTextArea areaTexto;
 	private static Ventana ventana;
 
-	private String[] historia = { // acortar texto
-			"Nuestro querido capitán de los Sombreros de Paja, Luffy",
+	private String[] historia = { "Nuestro querido capitán de los Sombreros de Paja, Luffy",
 			"Ha caído en manos de un usuario de la fruta Rabi Rabi no Mi",
 			"Esta fruta lleva a los afectados a un laberinto infernal",
 			"En el que tendrán que luchar con sus enemigos más fuertes para poder salir.",
@@ -35,8 +32,9 @@ public class Historia extends JPanel {
 			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?", "¿O tienes miedo?",
 			"¿Preparado?", "Pulsa continuar y demuestra de qué eres capaz." };
 	private int indiceParteHistoria = 0;
+	private boolean historiaCompletada = false;
 
-	public Historia(Ventana v) {
+	public HistoriaPrincipio(Ventana v) {
 		this.ventana = v;
 		setLayout(new BorderLayout());
 		setBackground(Color.BLACK);
@@ -63,11 +61,14 @@ public class Historia extends JPanel {
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(Lvl1.class);
+				if (historiaCompletada) {
+					ventana.cambiarAPantalla(Lvl1.class);
+				}
 			}
 		});
 		continuarButton.setForeground(new Color(255, 0, 0));
 		continuarButton.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 17));
+		continuarButton.setEnabled(false); // Deshabilitar el botón al inicio
 		contenedorTexto.add(continuarButton);
 
 		// Crear y iniciar un hilo para mostrar la historia gradualmente
@@ -78,6 +79,7 @@ public class Historia extends JPanel {
 				SwingUtilities.invokeLater(new Runnable() {
 					@Override
 					public void run() {
+						historiaCompletada = true; // Marcar la historia como completada
 						continuarButton.setEnabled(true); // Habilitar el botón Continuar después de mostrar la historia
 					}
 				});

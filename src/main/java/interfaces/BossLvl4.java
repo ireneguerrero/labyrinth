@@ -25,7 +25,7 @@ public class BossLvl4 extends JPanel {
 		btnFin.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(FinJuego.class);
+				ventana.cambiarAPantalla(HistoriaFinal.class);
 			}
 		});
 		btnFin.setBounds(475, 385, 155, 45);

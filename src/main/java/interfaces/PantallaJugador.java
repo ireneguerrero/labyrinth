@@ -96,14 +96,14 @@ public class PantallaJugador extends JPanel {
 							DAO.insertar("usuario", columnas);
 							JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito",
 									JOptionPane.INFORMATION_MESSAGE);
-							ventana.cambiarAPantalla(Historia.class);
+							ventana.cambiarAPantalla(HistoriaPrincipio.class);
 						} catch (SQLException e1) {
 							e1.printStackTrace();
 						}
 					} catch (HeadlessException e1) {
 						e1.printStackTrace();
 					}
-					ventana.cambiarAPantalla(Historia.class);
+					ventana.cambiarAPantalla(HistoriaPrincipio.class);
 				} catch (NombreConNumerosException e2) {
 					e2.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, "El nombre no debe contener números", "Error",

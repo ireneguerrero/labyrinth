@@ -2,16 +2,21 @@ package interfaces;
 
 import javax.swing.JPanel;
 import java.awt.Font;
+import java.awt.Image;
 import java.awt.Color;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JButton;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JRadioButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
 public class Lvl4 extends JPanel implements ActionListener {
 	private Ventana ventana;
@@ -47,6 +52,7 @@ public class Lvl4 extends JPanel implements ActionListener {
 	private JRadioButton opcion30;
 	private JRadioButton opcion31;
 	private JButton btnContinuar;
+	private JLabel lblFondo;
 
 	public Lvl4(Ventana v) {
 		this.ventana = v;
@@ -194,6 +200,18 @@ public class Lvl4 extends JPanel implements ActionListener {
 		opcion31 = new JRadioButton("");
 		opcion31.setBounds(379, 433, 21, 21);
 		add(opcion31);
+		
+		lblFondo = new JLabel("");
+		try {
+			BufferedImage imagen = ImageIO.read(new File("./imagenes/fondo5.jpg"));
+			Image enIcono = imagen.getScaledInstance(700, 500, Image.SCALE_SMOOTH);
+			lblFondo.setIcon(new ImageIcon(enIcono));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		lblFondo.setBounds(0, 0, 700, 500);
+		add(lblFondo);
+		
 	}
 
 	@Override
