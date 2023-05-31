@@ -46,6 +46,14 @@ public class BossLvl1 extends JPanel {
 		lblFondo.setBounds(0, 0, 700, 500);
 		add(lblFondo);
 		
+		//TODO: cambiar los tamaños de los iconos
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon(BossLvl1.class.getResource("/iconos/luffy.png")));
+//		Image enIcono = imagen.getScaledInstance(200, 100, Image.SCALE_SMOOTH);
+		lblNewLabel.setBounds(44, 104, 196, 307);
+		add(lblNewLabel);
+		
 		
 	}
 }
