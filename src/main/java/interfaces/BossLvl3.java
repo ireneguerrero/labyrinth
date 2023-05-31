@@ -25,7 +25,7 @@ public class BossLvl3 extends JPanel {
 		btnSiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(BossLvl4.class);
+				ventana.cambiarAPantalla(Lvl4.class);
 			}
 		});
 		btnSiguiente.setBounds(475, 385, 155, 45);

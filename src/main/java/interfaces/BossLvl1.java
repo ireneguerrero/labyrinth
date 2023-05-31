@@ -1,18 +1,14 @@
 package interfaces;
 
 import javax.swing.JPanel;
-import java.awt.GridBagLayout;
 import java.awt.Image;
 
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.awt.Font;
 import java.awt.Color;
-import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
@@ -30,7 +26,7 @@ public class BossLvl1 extends JPanel {
 		btnSiguiente.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(BossLvl2.class);
+				ventana.cambiarAPantalla(Lvl2.class);
 			}
 		});
 		btnSiguiente.setForeground(new Color(230, 0, 0));

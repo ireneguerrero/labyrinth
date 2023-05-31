@@ -63,7 +63,7 @@ public class Historia extends JPanel {
 		continuarButton.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				ventana.cambiarAPantalla(BossLvl1.class);
+				ventana.cambiarAPantalla(Lvl1.class);
 			}
 		});
 		continuarButton.setForeground(new Color(255, 0, 0));

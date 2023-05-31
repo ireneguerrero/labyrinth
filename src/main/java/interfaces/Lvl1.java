@@ -26,6 +26,29 @@ public class Lvl1 extends JPanel {
 		this.ventana = v;
 		setLayout(null);
 
+		JButton btnSiguiente = new JButton("Siguiente nivel");
+		btnSiguiente.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				ventana.cambiarAPantalla(Lvl2.class);
+			}
+		});
+		btnSiguiente.setForeground(new Color(230, 0, 0));
+		btnSiguiente.setBounds(475, 385, 155, 45);
+		btnSiguiente.setBackground(new Color(255, 215, 0));
+		btnSiguiente.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 18));
+		add(btnSiguiente);
+		
+		JLabel lblFondo = new JLabel("");
+		try {
+			BufferedImage imagen = ImageIO.read(new File("./imagenes/fondo_luffy_doflamingo.jpg"));
+			Image enIcono = imagen.getScaledInstance(700, 500, Image.SCALE_SMOOTH);
+			lblFondo.setIcon(new ImageIcon(enIcono));
+		} catch (IOException e1) {
+			e1.printStackTrace();
+		}
+		lblFondo.setBounds(0, 0, 700, 500);
+		add(lblFondo);
 		
 		
 	}

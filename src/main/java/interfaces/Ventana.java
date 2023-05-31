@@ -20,14 +20,26 @@ public class Ventana extends JFrame {
 		if (clase.equals(Historia.class)) {
 			this.setContentPane(new Historia(this));
 		}
+		if (clase.equals(Lvl1.class)) {
+			this.setContentPane(new Lvl1(this));
+		}
 		if (clase.equals(BossLvl1.class)) {
 			this.setContentPane(new BossLvl1(this));
+		}
+		if (clase.equals(Lvl2.class)) {
+			this.setContentPane(new Lvl2(this));
 		}
 		if (clase.equals(BossLvl2.class)) {
 			this.setContentPane(new BossLvl2(this));
 		}
+		if (clase.equals(Lvl3.class)) {
+			this.setContentPane(new Lvl3(this));
+		}
 		if (clase.equals(BossLvl3.class)) {
 			this.setContentPane(new BossLvl3(this));
+		}
+		if (clase.equals(Lvl4.class)) {
+			this.setContentPane(new Lvl4(this));
 		}
 		if (clase.equals(BossLvl4.class)) {
 			this.setContentPane(new BossLvl4(this));
