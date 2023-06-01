@@ -1,57 +1,60 @@
 package interfaces;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import clases.RankingEntry;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import utils.DAO;
 
 public class Ranking extends JPanel {
-	private Ventana ventana;
-	private JTable tablaRanking;
+    private Ventana ventana;
+    private JTable tablaRanking;
 
-	public Ranking(Ventana v) {
-		super();
-		this.ventana = v;
+    public Ranking(Ventana ventana) {
+        this.ventana = ventana;
+        setLayout(null);
 
-		JPanel panelRanking = new JPanel();
-		panelRanking.setLayout(null);
+        tablaRanking = new JTable();
+        tablaRanking.setFont(new Font("Arial", Font.PLAIN, 12));
+        tablaRanking.setRowHeight(20);
 
-		// Crear el modelo de tabla con las columnas
-		String[] columnas = { "Puesto", "Nombre", "Tiempo" };
-		DefaultTableModel model = new DefaultTableModel(columnas, 0);
+        JScrollPane scrollPane = new JScrollPane(tablaRanking);
+        scrollPane.setBounds(50, 50, 600, 400);
+        add(scrollPane);
 
-		// Crear la tabla con el modelo
-		tablaRanking = new JTable(model);
+//        cargarDatosRanking();
+    }
 
-		// Crear el JScrollPane y agregar la tabla
-		JScrollPane scrollPane = new JScrollPane(tablaRanking);
-		scrollPane.setBounds(20, 20, 660, 440);
-		panelRanking.add(scrollPane);
+//    private void cargarDatosRanking() {
+//        DefaultTableModel model = new DefaultTableModel();
+//        model.addColumn("Puesto");
+//        model.addColumn("Nombre");
+//        model.addColumn("Tiempo");
+//
+//        try {
+//            ArrayList<Object[]> ranking = DAO.consultarRanking();
+//            int puesto = 1;
+//            for (Object[] fila : ranking) {
+//                String nombre = (String) fila[0];
+//                int tiempo = (int) fila[1];
+//                model.addRow(new Object[]{puesto, nombre, tiempo});
+//                puesto++;
+//            }
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//        }
+//
+//        tablaRanking.setModel(model);
+//    }
 
-		// Cargar los datos de los jugadores desde la base de datos
-		cargarDatosRanking();
-
-		setVisible(true);
-	}
-
-	private void cargarDatosRanking() {
-		try {
-			ArrayList<RankingEntry> ranking = DAO.obtenerRanking();
-			DefaultTableModel model = (DefaultTableModel) tablaRanking.getModel();
-
-			for (RankingEntry entry : ranking) {
-				model.addRow(new Object[] { entry.getPuesto(), entry.getNombre(), entry.getTiempo() });
-			}
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-	}
-
+    public Dimension getPreferredSize() {
+        return new Dimension(700, 500);
+    }
 }

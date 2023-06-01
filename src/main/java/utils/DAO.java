@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -16,6 +17,7 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map.Entry;
 
+import javax.naming.NamingException;
 import javax.swing.table.DefaultTableModel;
 
 import clases.RankingEntry;
@@ -190,25 +192,26 @@ public class DAO {
 		return ret;
 	}
 	
-	public static ArrayList<RankingEntry> obtenerRanking() throws SQLException {
-        ArrayList<RankingEntry> ranking = new ArrayList<>();
+//	public static ArrayList<RankingEntry> consultarRanking() {
+//	    ArrayList<RankingEntry> ranking = new ArrayList<>();
+//
+//	    try (Connection conn = DAO.getConnection();
+//	         Statement stmt = conn.createStatement();
+//	         ResultSet rs = stmt.executeQuery("SELECT * FROM ranking ORDER BY tiempo ASC LIMIT 10")) {
+//
+//	        while (rs.next()) {
+//	            String nombre = rs.getString("nombre");
+//	            int tiempo = rs.getInt("tiempo");
+//	            int puesto = rs.getRow();
+//	            RankingEntry entry = new RankingEntry(puesto, nombre, tiempo);
+//	            ranking.add(entry);
+//	        }
+//	    } catch (SQLException | NamingException e) {
+//	        e.printStackTrace();
+//	    }
+//
+//	    return ranking;
+//	}
 
-        Statement smt = conectar();
-        ResultSet rst = smt.executeQuery("SELECT nombre, tiempo FROM usuario ORDER BY tiempo");
-
-        int puesto = 1;
-        while (rst.next()) {
-            String nombre = rst.getString("nombre");
-            int tiempo = rst.getInt("tiempo");
-            RankingEntry entry = new RankingEntry(puesto, nombre, tiempo);
-            ranking.add(entry);
-            puesto++;
-        }
-
-        rst.close();
-        desconectar(smt);
-
-        return ranking;
-    }
 
 }

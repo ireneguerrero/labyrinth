@@ -1,6 +1,10 @@
 package interfaces;
 
 import javax.swing.JPanel;
+
+import clases.Enemigo;
+import clases.Jugador;
+
 import java.awt.Image;
 
 import javax.swing.JButton;
@@ -17,6 +21,8 @@ import java.awt.event.MouseEvent;
 
 public class BossLvl1 extends JPanel {
 	private Ventana ventana;
+	private Enemigo enemigo;
+	private Jugador jugador;
 
 	public BossLvl1(Ventana v) {
 		this.ventana = v;
@@ -57,4 +63,12 @@ public class BossLvl1 extends JPanel {
 		add(lblFondo);
 
 	}
+	
+	//TODO: peleas
+	
+//	public void inicializarEnemigo() {
+//	    enemigo = new Enemigo("Doflamingo", "/iconos/doflamingo.png",100, true, 10, 20, 30, 40,"");
+//	}
+
+	
 }

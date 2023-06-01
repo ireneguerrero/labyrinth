@@ -18,6 +18,7 @@ import java.awt.event.MouseEvent;
 
 public class FinJuego extends JPanel {
 	private Ventana ventana;
+
 	public FinJuego(Ventana v) {
 		this.ventana = v;
 		setLayout(null);
@@ -32,7 +33,7 @@ public class FinJuego extends JPanel {
 		}
 		lblFondo.setBounds(0, 0, 700, 500);
 		add(lblFondo);
-		
+
 		JButton btnRanking = new JButton("Ranking");
 		btnRanking.addMouseListener(new MouseAdapter() {
 			@Override
@@ -40,12 +41,12 @@ public class FinJuego extends JPanel {
 				ventana.cambiarAPantalla(Ranking.class);
 			}
 		});
+
 		btnRanking.setForeground(new Color(230, 0, 0));
 		btnRanking.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 18));
 		btnRanking.setBackground(new Color(255, 215, 0));
 		btnRanking.setBounds(10, 31, 155, 45);
 		add(btnRanking);
-		
 
 	}
 }
