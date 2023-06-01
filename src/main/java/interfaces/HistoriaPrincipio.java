@@ -62,7 +62,7 @@ public class HistoriaPrincipio extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (historiaCompletada) {
-					ventana.cambiarAPantalla(Lvl1.class);
+					ventana.irALaberinto((byte)1);
 				}
 			}
 		});

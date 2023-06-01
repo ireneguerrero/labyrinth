@@ -21,6 +21,7 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.SwingConstants;
 
+import clases.Jugador;
 import exceptions.NombreConNumerosException;
 import utils.DAO;
 
@@ -34,7 +35,6 @@ import java.awt.event.MouseEvent;
 public class PantallaJugador extends JPanel {
 	private Ventana ventana;
 	private JTextField textNombre;
-	private JPasswordField passwordField;
 
 	public PantallaJugador(Ventana v) {
 		this.ventana = v;
@@ -59,17 +59,6 @@ public class PantallaJugador extends JPanel {
 		add(textNombre);
 		textNombre.setColumns(10);
 
-		JLabel lblContraseña = new JLabel("Contraseña");
-		lblContraseña.setBounds(301, 242, 90, 21);
-		lblContraseña.setHorizontalAlignment(SwingConstants.CENTER);
-		lblContraseña.setForeground(Color.WHITE);
-		lblContraseña.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));
-		add(lblContraseña);
-
-		passwordField = new JPasswordField();
-		passwordField.setBounds(254, 287, 185, 19);
-		add(passwordField);
-
 		JButton btnEmpezar = new JButton("Empezar");
 		btnEmpezar.setBackground(new Color(255, 215, 0));
 		btnEmpezar.setForeground(new Color(230, 0, 0));
@@ -80,36 +69,21 @@ public class PantallaJugador extends JPanel {
 					String usuario = textNombre.getText();
 					validarNombre();
 
-					String password = new String(passwordField.getPassword());
-					if (usuario.isEmpty() || password.isEmpty()) {
-						JOptionPane.showMessageDialog(ventana, "Debes ingresar un nombre de usuario y una contraseña",
-								"Error", JOptionPane.ERROR_MESSAGE);
+					if (usuario.isEmpty()) {
+						JOptionPane.showMessageDialog(ventana, "Debes ingresar un nombre de usuario ", "Error",
+								JOptionPane.ERROR_MESSAGE);
 						return; // Detener la ejecución si los campos están vacíos
 					}
-					System.out.println(usuario + " : " + password);
 
-					try {
-						HashMap<String, Object> columnas = new HashMap<>();
-						columnas.put("nombre", usuario);
-						columnas.put("password", password);
-						try {
-							DAO.insertar("usuario", columnas);
-							JOptionPane.showMessageDialog(ventana, "Registrado Correctamente", "Éxito",
-									JOptionPane.INFORMATION_MESSAGE);
-							ventana.cambiarAPantalla(HistoriaPrincipio.class);
-						} catch (SQLException e1) {
-							e1.printStackTrace();
-						}
-					} catch (HeadlessException e1) {
-						e1.printStackTrace();
-					}
+					ventana.jugador = new Jugador(usuario);
 					ventana.cambiarAPantalla(HistoriaPrincipio.class);
-				} catch (NombreConNumerosException e2) {
+				} catch (NombreConNumerosException | IOException e2) {
 					e2.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, "El nombre no debe contener números", "Error",
 							JOptionPane.ERROR_MESSAGE);
 				}
 			}
+
 		});
 		btnEmpezar.setBounds(282, 371, 135, 29);
 		btnEmpezar.setFont(new Font("Franklin Gothic Book", Font.ITALIC, 18));

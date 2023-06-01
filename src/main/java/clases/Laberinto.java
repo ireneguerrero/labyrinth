@@ -26,7 +26,7 @@ public class Laberinto {
 	            this.nivel = 2;
 	            this.celdas = new Celda[][] {
 	            	{new Muro(), new Muro(), new Muro(), new Muro()},
-	                {new Muro(), new Muro(), new Celda(), new Muro()},
+	                {new Muro(), new Celda(), new Celda(), new Muro()},
 	                {new Muro(), new Celda(), new Celda(), new Muro()},
 	     /*inicio*/	{new Celda(), new Celda(), new Muro(), new Muro()},
 	                {new Muro(), new Celda(), new Celda(), new Muro()},

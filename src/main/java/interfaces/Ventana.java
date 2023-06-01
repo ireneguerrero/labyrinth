@@ -3,7 +3,13 @@ package interfaces;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
+import clases.Jugador;
+import clases.Laberinto;
+
 public class Ventana extends JFrame {
+	
+	protected Jugador jugador;
+	
 	public Ventana() {
 		this.setSize(700, 500); // tamaño de la ventana
 		this.setTitle("Labyrinth"); // título de la ventana
@@ -20,26 +26,14 @@ public class Ventana extends JFrame {
 		if (clase.equals(HistoriaPrincipio.class)) {
 			this.setContentPane(new HistoriaPrincipio(this));
 		}
-		if (clase.equals(Lvl1.class)) {
-			this.setContentPane(new Lvl1(this));
-		}
 		if (clase.equals(BossLvl1.class)) {
 			this.setContentPane(new BossLvl1(this));
-		}
-		if (clase.equals(Lvl2.class)) {
-			this.setContentPane(new Lvl2(this));
 		}
 		if (clase.equals(BossLvl2.class)) {
 			this.setContentPane(new BossLvl2(this));
 		}
-		if (clase.equals(Lvl3.class)) {
-			this.setContentPane(new Lvl3(this));
-		}
 		if (clase.equals(BossLvl3.class)) {
 			this.setContentPane(new BossLvl3(this));
-		}
-		if (clase.equals(Lvl4.class)) {
-			this.setContentPane(new Lvl4(this));
 		}
 		if (clase.equals(BossLvl4.class)) {
 			this.setContentPane(new BossLvl4(this));
@@ -54,5 +48,9 @@ public class Ventana extends JFrame {
 			this.setContentPane(new Ranking(this));
 		}
 		this.getContentPane().setVisible(true);
+	}
+	
+	public void irALaberinto(byte laberinto) {
+			this.setContentPane(new Nivel(this,new Laberinto(laberinto)));
 	}
 }

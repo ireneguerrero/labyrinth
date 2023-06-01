@@ -1,27 +1,39 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
 
 public class Jugador extends Personaje {
-	private byte posicion;
+	private byte posx;
+	private byte posy;
 
-	public Jugador(String nombre, BufferedImage imagen, byte vida, boolean estado, byte poder, byte daño, byte fuerza,
-			byte inteligencia, byte agilidad, byte posicion) {
-		super(nombre, imagen, vida, estado, poder, daño, fuerza, inteligencia, agilidad);
-		this.posicion = posicion;
+	public Jugador(String nombre) throws IOException {
+		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\luffy.png")), (byte)100, true,(byte) 80,(byte)80,(byte)90,(byte)50,(byte)100);
+		this.posx=1;
+		this.posy=1;
 	}
 
-	public byte getPosicion() {
-		return posicion;
+	public void reiniciarPosicion() {
+		posx=1;
+		posy=1;
 	}
 
-	public void setPosicion(byte posicion) {
-		this.posicion = posicion;
+	public void moverArriba() {
+		posy--;
 	}
-
-	@Override
-	public String toString() {
-		return "Jugador: \nPosicion: " + posicion;
+	
+	public void moverAbajo() {
+		posy++;
 	}
+	public void moverIzda() {
+		posx--;
+	}
+	public void moverDcha() {
+		posx++;
+	}
+	
 
 }
