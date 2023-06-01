@@ -50,6 +50,9 @@ public class Ventana extends JFrame {
 		if (clase.equals(FinJuego.class)) {
 			this.setContentPane(new FinJuego(this));
 		}
+		if (clase.equals(Ranking.class)) {
+			this.setContentPane(new Ranking(this));
+		}
 		this.getContentPane().setVisible(true);
 	}
 }

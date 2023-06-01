@@ -16,6 +16,10 @@ import java.util.Iterator;
 import java.util.LinkedHashSet;
 import java.util.Map.Entry;
 
+import javax.swing.table.DefaultTableModel;
+
+import clases.RankingEntry;
+
 public class DAO {
 	private static Connection conexion;
 
@@ -185,4 +189,26 @@ public class DAO {
 
 		return ret;
 	}
+	
+	public static ArrayList<RankingEntry> obtenerRanking() throws SQLException {
+        ArrayList<RankingEntry> ranking = new ArrayList<>();
+
+        Statement smt = conectar();
+        ResultSet rst = smt.executeQuery("SELECT nombre, tiempo FROM usuario ORDER BY tiempo");
+
+        int puesto = 1;
+        while (rst.next()) {
+            String nombre = rst.getString("nombre");
+            int tiempo = rst.getInt("tiempo");
+            RankingEntry entry = new RankingEntry(puesto, nombre, tiempo);
+            ranking.add(entry);
+            puesto++;
+        }
+
+        rst.close();
+        desconectar(smt);
+
+        return ranking;
+    }
+
 }
