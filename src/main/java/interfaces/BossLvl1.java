@@ -34,17 +34,17 @@ public class BossLvl1 extends JPanel {
 		btnSiguiente.setBackground(new Color(255, 215, 0));
 		btnSiguiente.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 18));
 		add(btnSiguiente);
-		
+
 		JLabel lblLuffy = new JLabel("");
 		lblLuffy.setIcon(new ImageIcon(BossLvl1.class.getResource("/iconos/luffy.png")));
 		lblLuffy.setBounds(31, 168, 241, 300);
 		add(lblLuffy);
-		
+
 		JLabel lblDoflamingo = new JLabel("");
 		lblDoflamingo.setIcon(new ImageIcon(BossLvl1.class.getResource("/iconos/doflamingo.png")));
 		lblDoflamingo.setBounds(421, 10, 269, 300);
 		add(lblDoflamingo);
-		
+
 		JLabel lblFondo = new JLabel("");
 		try {
 			BufferedImage imagen = ImageIO.read(new File("./imagenes/fondo_luffy_doflamingo.jpg"));
@@ -55,14 +55,6 @@ public class BossLvl1 extends JPanel {
 		}
 		lblFondo.setBounds(0, 0, 700, 500);
 		add(lblFondo);
-		
-		//TODO: cambiar los tamaños de los iconos
-		
-		
-		
-		
-		
-		
-		
+
 	}
 }

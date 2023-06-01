@@ -33,6 +33,16 @@ public class BossLvl4 extends JPanel {
 		btnFin.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 18));
 		btnFin.setBackground(new Color(255, 215, 0));
 		add(btnFin);
+		
+		JLabel lblLuffy = new JLabel("");
+		lblLuffy.setIcon(new ImageIcon(BossLvl4.class.getResource("/iconos/luffy.png")));
+		lblLuffy.setBounds(26, 167, 232, 291);
+		add(lblLuffy);
+		
+		JLabel lblKaido = new JLabel("");
+		lblKaido.setIcon(new ImageIcon(BossLvl4.class.getResource("/iconos/kaido.png")));
+		lblKaido.setBounds(410, 10, 262, 309);
+		add(lblKaido);
 
 		JLabel lblFondo = new JLabel("");
 		try {

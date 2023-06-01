@@ -35,6 +35,16 @@ public class BossLvl2 extends JPanel {
 		btnSiguiente.setBackground(new Color(255, 215, 0));
 		add(btnSiguiente);
 
+		JLabel lblLuffy = new JLabel("");
+		lblLuffy.setIcon(new ImageIcon(BossLvl2.class.getResource("/iconos/luffy.png")));
+		lblLuffy.setBounds(21, 175, 241, 300);
+		add(lblLuffy);
+
+		JLabel lblKatakuri = new JLabel("");
+		lblKatakuri.setIcon(new ImageIcon(BossLvl2.class.getResource("/iconos/katakuri.png")));
+		lblKatakuri.setBounds(448, 10, 206, 245);
+		add(lblKatakuri);
+
 		JLabel lblFondo = new JLabel("");
 		try {
 			BufferedImage imagen = ImageIO.read(new File("./imagenes/fondo_luffy_katakuri.jpg"));

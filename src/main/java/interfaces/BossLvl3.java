@@ -33,6 +33,17 @@ public class BossLvl3 extends JPanel {
 		btnSiguiente.setFont(new Font("Franklin Gothic Book", Font.BOLD | Font.ITALIC, 18));
 		btnSiguiente.setBackground(new Color(255, 215, 0));
 		add(btnSiguiente);
+		
+		JLabel lblLuffy = new JLabel("");
+		lblLuffy.setIcon(new ImageIcon(BossLvl3.class.getResource("/iconos/luffy.png")));
+		lblLuffy.setBounds(444, 10, 232, 262);
+		add(lblLuffy);
+		
+		JLabel lblKurohige = new JLabel("");
+		lblKurohige.setIcon(new ImageIcon(BossLvl3.class.getResource("/iconos/kurohige.png")));
+		lblKurohige.setBounds(36, 227, 204, 244);
+		add(lblKurohige);
+		
 
 		JLabel lblFondo = new JLabel("");
 		try {
