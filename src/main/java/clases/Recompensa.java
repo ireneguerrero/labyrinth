@@ -1,15 +1,18 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.Clip;
 
 public class Recompensa extends ElementoCelda {
 	private String tipo;
 	private byte puntos;
 
-	public Recompensa(String nombre, BufferedImage imagen, Clip sonido, String tipo, byte puntos) {
-		super(nombre, imagen, sonido);
+	public Recompensa(String nombre, BufferedImage imagen, Clip sonido, String tipo, byte puntos) throws IOException {
+		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")), sonido); //sonido?
 		this.tipo = tipo;
 		this.puntos = puntos;
 	}

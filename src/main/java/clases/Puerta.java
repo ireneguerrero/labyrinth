@@ -1,16 +1,19 @@
 package clases;
 
 import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 
+import javax.imageio.ImageIO;
 import javax.sound.sampled.Clip;
 
 public class Puerta extends ElementoCelda {
 	private Llave llave;
 	private ArrayList<String> material;
 
-	public Puerta(String nombre, BufferedImage imagen, Clip sonido, Llave llave, ArrayList<String> material) {
-		super(nombre, imagen, sonido);
+	public Puerta(String nombre, Clip sonido, Llave llave, ArrayList<String> material) throws IOException {
+		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\puerta.jpg")), sonido); //sonido?
 		this.llave = llave;
 		this.material = material;
 	}

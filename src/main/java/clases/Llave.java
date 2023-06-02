@@ -11,7 +11,7 @@ public class Llave extends ElementoCelda {
 	private boolean esMaestra;
 
 	public Llave(String nombre, Clip sonido, boolean esMaestra) throws IOException {
-		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")), sonido);
+		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")), sonido); //sonido?
 		this.esMaestra = esMaestra;
 	}
 

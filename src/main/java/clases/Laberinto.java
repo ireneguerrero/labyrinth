@@ -1,5 +1,6 @@
 package clases;
 
+import java.io.IOException;
 import java.util.Arrays;
 
 public class Laberinto {
@@ -11,70 +12,70 @@ public class Laberinto {
 		this.nivel = nivel;
 	}
 
-	public Laberinto(byte numero) {
-	    switch (numero) {
-	        case 1:
-	            this.nivel = 1;
-	            this.celdas = new Celda[][] {
-	                {new Muro(), new Muro(), new Muro(),},
-	                {new Muro(), new Celda(), new Celda()},//salida
-	     /*inicio*/	{new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Muro()}
-	            };
-	            break;
-	        case 2:
-	            this.nivel = 2;
-	            this.celdas = new Celda[][] {
-	            	{new Muro(), new Muro(), new Muro(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Muro()},
-	     /*inicio*/	{new Celda(), new Celda(), new Muro(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Celda(), new Muro()}
-	                						//salida
-	            };
-	            break;
-	        case 3:
-	            this.nivel = 3;
-	            this.celdas = new Celda[][] {
-	            										//salida
-	            	{new Muro(), new Muro(), new Muro(), new Celda(), new Muro()},
-	            	{new Muro(), new Celda(), new Celda(), new Celda(), new Muro()},
-	            	{new Muro(), new Celda(), new Muro(), new Muro(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Muro(),new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Muro(), new Muro(), new Muro()}
-	                			//inicio
-	            };
-	            break;
-	        case 4:
-	            this.nivel = 4;
-	            this.celdas = new Celda[][] {
-	            	{new Muro(), new Muro(), new Muro(), new Muro(), new Muro(), new Muro(), new Muro()},
-	            	{new Muro(), new Celda(), new Celda(), new Celda(), new Celda(), new Celda(), new Celda()},//inicio
-	            	{new Muro(), new Celda(), new Muro(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Muro(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Celda(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Muro(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Muro(), new Muro(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Celda(), new Muro(), new Muro(), new Muro(), new Muro(), new Muro()},
-	                {new Muro(), new Celda(), new Celda(), new Celda(), new Muro(), new Muro(), new Muro()},
-	                {new Muro(), new Muro(), new Muro(), new Celda(), new Celda(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Muro(), new Muro(), new Muro(), new Celda(), new Muro()},
-	                {new Muro(), new Muro(), new Muro(), new Muro(), new Muro(), new Celda(), new Muro()}
-	                															//salida
-	            };
-	            break;
-	        default:
-	            this.nivel = 0;
-	            this.celdas = new Celda[0][0]; // Laberinto vacío por defecto
-	            break;
-	    }
+	public Laberinto(byte numero) throws IOException {
+		switch (numero) {
+		case 1:
+			this.nivel = 1;
+			this.celdas = new Celda[][] {
+																												// salida
+					{ new Muro(), new Muro(), new Muro(),												 		 new Celda(), new Muro() },
+					{ new Muro(), new Celda(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 10)),new Celda(), new Muro() },
+					{ new Muro(), new Celda(), new Muro(),												 		 new Muro(),  new Muro() },
+					{ new Muro(), new Celda(), new CeldaVacia(new Puerta(null, null, null, null)), 		 		 new Celda(), new Muro() },
+					{ new Muro(), new Muro(), new Muro(), 												 		 new Celda(), new Muro() },
+					{ new Muro(), new Celda(), new CeldaVacia(new Llave(null, null, true)),				 		 new Celda(), new Muro() },
+					{ new Muro(), new Celda(), new Muro(), 												 		 new Muro(),  new Muro() }
+								 // inicio
+			};
+			break;
+		case 2:
+			this.nivel = 2;
+			this.celdas = new Celda[][] {
+														
+					{ new Muro(), new Muro(), new Muro(), new Muro(), 														 new Muro() },
+					{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 20)), new Celda() }, // salida
+					{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
+					{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null, null, null)),				 new Muro() },
+					{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
+		/*inicio*/	{ new Celda(), new Celda(), new CeldaVacia(new Llave(null, null, true)),					new Celda(), new Muro() },
+					{ new Muro(), new Muro(), new Muro(), new Muro(), new Muro() }
+					
+			};
+			break;
+		case 3:
+			this.nivel = 3;
+			this.celdas = new Celda[][] {
+					// salida
+					{ new Celda(), new Muro(), new Muro(),														 new Muro(),  new Muro() },
+					{ new Celda(), new Celda(), new CeldaVacia(new Puerta(null, null, null, null)),				 new Celda(), new Muro() },
+					{ new Muro(), new Muro(), new Muro(), 														 new Celda(), new Muro() },
+					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 30)), new Celda(), new Muro() },
+					{ new Muro(), new Muro(), new Celda(), 														 new Muro(),  new Muro() },
+					{ new Muro(), new Muro(), new Celda(), new CeldaVacia(new Llave(null, null, true)),						  new Muro() },
+					{ new Muro(), new Muro(), new Muro(), new Celda(),														  new Muro() }
+															// inicio
+			};
+			break;
+		case 4:
+			this.nivel = 4;
+			this.celdas = new Celda[][] {
+											// salida
+					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 30)), new Muro(), new Muro() },
+					{ new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null, null, null)), 				 new Muro(), new Muro() },
+					{ new Muro(), new Celda(), new Celda(), new Celda(), 													 new Muro() },
+					{ new Muro(), new Celda(), new Muro(), new Celda(), 													 new Muro() },
+					{ new Muro(), new Celda(), new Muro(), new CeldaVacia(new Llave(null, null, true)),						 new Muro() },
+					{ new Muro(), new Celda(), new Celda(), new Celda(),													 new Muro() },
+					{ new Muro(), new Muro(), new Celda(),														 new Muro(), new Muro() }
+											 // inicio
+			};
+			break;
+		default:
+			this.nivel = 0;
+			this.celdas = new Celda[0][0]; // Laberinto vacío por defecto
+			break;
+		}
 	}
-
 
 	public Celda[][] getCeldas() {
 		return celdas;
