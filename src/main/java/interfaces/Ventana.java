@@ -2,6 +2,10 @@ package interfaces;
 
 import java.io.IOException;
 
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -9,17 +13,20 @@ import clases.Jugador;
 import clases.Laberinto;
 
 public class Ventana extends JFrame {
-	
+	private Clip clip;
 	protected Jugador jugador;
-	
-	public Ventana() {
+
+	public Ventana() throws UnsupportedAudioFileException, IOException {
 		this.setSize(700, 500); // tamaño de la ventana
 		this.setTitle("Labyrinth"); // título de la ventana
+		AudioInputStream audioInputStream = AudioSystem
+				.getAudioInputStream(Ventana.class.getResourceAsStream("/audios/musica_fondo.wav")); //?
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // si se cierra la ventana termina el programa
 		this.setLocationRelativeTo(null); // se pone la ventana centrada
 		this.setContentPane(new PantallaJugador(this));
 		this.setVisible(true); // tiene que ser la última línea del constructor, se hace visible la ventana
 	}
+
 	public void cambiarAPantalla(Class<?> clase) {
 		this.getContentPane().setVisible(false);
 		if (clase.equals(PantallaJugador.class)) {
@@ -51,8 +58,8 @@ public class Ventana extends JFrame {
 		}
 		this.getContentPane().setVisible(true);
 	}
-	
+
 	public void irALaberinto(byte laberinto) throws IOException {
-			this.setContentPane(new Nivel(this,new Laberinto(laberinto)));
+		this.setContentPane(new Nivel(this, new Laberinto(laberinto)));
 	}
 }

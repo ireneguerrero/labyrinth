@@ -1,6 +1,5 @@
 package clases;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
@@ -15,7 +14,7 @@ public class Recompensa extends ElementoCelda {
 
 	public Recompensa(String tipo, byte puntos) throws IOException, UnsupportedAudioFileException {
 		super("Cofre", ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")),
-				(Clip) AudioSystem.getAudioInputStream(Recompensa.class.getResourceAsStream("/audios/Recompensa.wav"))); // sonido?
+				(Clip) AudioSystem.getAudioInputStream(Recompensa.class.getResourceAsStream("/audios/recompensa.wav"))); // sonido?
 		this.tipo = tipo;
 		this.puntos = puntos;
 	}
