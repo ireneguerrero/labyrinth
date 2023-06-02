@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.io.IOException;
+
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 
@@ -50,7 +52,7 @@ public class Ventana extends JFrame {
 		this.getContentPane().setVisible(true);
 	}
 	
-	public void irALaberinto(byte laberinto) {
+	public void irALaberinto(byte laberinto) throws IOException {
 			this.setContentPane(new Nivel(this,new Laberinto(laberinto)));
 	}
 }
