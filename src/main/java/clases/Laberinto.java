@@ -60,7 +60,7 @@ public class Laberinto {
 			this.nivel = 4;
 			this.celdas = new Celda[][] {
 											// salida
-					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 30)), new Muro(), new Muro() },
+					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 40)), new Muro(), new Muro() },
 					{ new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null, null, null)), 				 new Muro(), new Muro() },
 					{ new Muro(), new Celda(), new Celda(), new Celda(), 													 new Muro() },
 					{ new Muro(), new Celda(), new Muro(), new Celda(), 													 new Muro() },
