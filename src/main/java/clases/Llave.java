@@ -15,8 +15,6 @@ public class Llave extends ElementoCelda {
 		this.esMaestra = esMaestra;
 	}
 
-
-
 	public boolean isEsMaestra() {
 		return esMaestra;
 	}
