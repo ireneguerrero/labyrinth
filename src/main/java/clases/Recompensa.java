@@ -5,14 +5,17 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Recompensa extends ElementoCelda {
 	private String tipo;
 	private byte puntos;
 
-	public Recompensa(String nombre, BufferedImage imagen, Clip sonido, String tipo, byte puntos) throws IOException {
-		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")), sonido); //sonido?
+	public Recompensa(String tipo, byte puntos) throws IOException, UnsupportedAudioFileException {
+		super("Cofre", ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")),
+				(Clip) AudioSystem.getAudioInputStream(Recompensa.class.getResourceAsStream("/audios/Recompensa.wav"))); // sonido?
 		this.tipo = tipo;
 		this.puntos = puntos;
 	}

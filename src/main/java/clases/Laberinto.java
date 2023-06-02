@@ -3,6 +3,8 @@ package clases;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.sound.sampled.UnsupportedAudioFileException;
+
 public class Laberinto {
 	private byte nivel;
 	private Celda[][] celdas;
@@ -16,59 +18,79 @@ public class Laberinto {
 		switch (numero) {
 		case 1:
 			this.nivel = 1;
-			this.celdas = new Celda[][] {
-																												// salida
-					{ new Muro(), new Muro(), new Muro(),												 		 new Celda(), new Muro() },
-					{ new Muro(), new Celda(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 10)),new Celda(), new Muro() },
-					{ new Muro(), new Celda(), new Muro(),												 		 new Muro(),  new Muro() },
-					{ new Muro(), new Celda(), new CeldaVacia(new Puerta(null, null, null, null)), 		 		 new Celda(), new Muro() },
-					{ new Muro(), new Muro(), new Muro(), 												 		 new Celda(), new Muro() },
-					{ new Muro(), new Celda(), new CeldaVacia(new Llave(null, null, true)),				 		 new Celda(), new Muro() },
-					{ new Muro(), new Celda(), new Muro(), 												 		 new Muro(),  new Muro() }
-								 // inicio
-			};
+			try {
+				this.celdas = new Celda[][] {
+																													// salida
+						{ new Muro(), new Muro(), new Muro(),												 		 new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Recompensa(null, (byte) 10)),new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new Muro(),												 		 new Muro(),  new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Puerta(null, null)), 		 		 new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Muro(), 												 		 new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Llave(true)),				 		 new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new Muro(), 												 		 new Muro(),  new Muro() }
+									 // inicio
+				};
+			} catch (IOException | UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case 2:
 			this.nivel = 2;
-			this.celdas = new Celda[][] {
-														
-					{ new Muro(), new Muro(), new Muro(), new Muro(), 														 new Muro() },
-					{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 20)), new Celda() }, // salida
-					{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
-					{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null, null, null)),				 new Muro() },
-					{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
-		/*inicio*/	{ new Celda(), new Celda(), new CeldaVacia(new Llave(null, null, true)),					new Celda(), new Muro() },
-					{ new Muro(), new Muro(), new Muro(), new Muro(), new Muro() }
-					
-			};
+			try {
+				this.celdas = new Celda[][] {
+															
+						{ new Muro(), new Muro(), new Muro(), new Muro(), 														 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 20)), new Celda() }, // salida
+						{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null)),				 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new Celda(),														 new Muro() },
+/*inicio*/	{ new Celda(), new Celda(), new CeldaVacia(new Llave(true)),					new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new Muro(), new Muro() }
+						
+				};
+			} catch (IOException | UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case 3:
 			this.nivel = 3;
-			this.celdas = new Celda[][] {
-					// salida
-					{ new Celda(), new Muro(), new Muro(),														 new Muro(),  new Muro() },
-					{ new Celda(), new Celda(), new CeldaVacia(new Puerta(null, null, null, null)),				 new Celda(), new Muro() },
-					{ new Muro(), new Muro(), new Muro(), 														 new Celda(), new Muro() },
-					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 30)), new Celda(), new Muro() },
-					{ new Muro(), new Muro(), new Celda(), 														 new Muro(),  new Muro() },
-					{ new Muro(), new Muro(), new Celda(), new CeldaVacia(new Llave(null, null, true)),						  new Muro() },
-					{ new Muro(), new Muro(), new Muro(), new Celda(),														  new Muro() }
-															// inicio
-			};
+			try {
+				this.celdas = new Celda[][] {
+						// salida
+						{ new Celda(), new Muro(), new Muro(),														 new Muro(),  new Muro() },
+						{ new Celda(), new Celda(), new CeldaVacia(new Puerta(null, null)),				 new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Muro(), 														 new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 30)), new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Celda(), 														 new Muro(),  new Muro() },
+						{ new Muro(), new Muro(), new Celda(), new CeldaVacia(new Llave(true)),						  new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new Celda(),														  new Muro() }
+																// inicio
+				};
+			} catch (IOException | UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		case 4:
 			this.nivel = 4;
-			this.celdas = new Celda[][] {
-											// salida
-					{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, null, null, null, (byte) 40)), new Muro(), new Muro() },
-					{ new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null, null, null)), 				 new Muro(), new Muro() },
-					{ new Muro(), new Celda(), new Celda(), new Celda(), 													 new Muro() },
-					{ new Muro(), new Celda(), new Muro(), new Celda(), 													 new Muro() },
-					{ new Muro(), new Celda(), new Muro(), new CeldaVacia(new Llave(null, null, true)),						 new Muro() },
-					{ new Muro(), new Celda(), new Celda(), new Celda(),													 new Muro() },
-					{ new Muro(), new Muro(), new Celda(),														 new Muro(), new Muro() }
-											 // inicio
-			};
+			try {
+				this.celdas = new Celda[][] {
+												// salida
+						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 40)), new Muro(), new Muro() },
+						{ new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null)), 				 new Muro(), new Muro() },
+						{ new Muro(), new Celda(), new Celda(), new Celda(), 													 new Muro() },
+						{ new Muro(), new Celda(), new Muro(), new Celda(), 													 new Muro() },
+						{ new Muro(), new Celda(), new Muro(), new CeldaVacia(new Llave(true)),						 new Muro() },
+						{ new Muro(), new Celda(), new Celda(), new Celda(),													 new Muro() },
+						{ new Muro(), new Muro(), new Celda(),														 new Muro(), new Muro() }
+												 // inicio
+				};
+			} catch (IOException | UnsupportedAudioFileException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			break;
 		default:
 			this.nivel = 0;

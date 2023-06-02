@@ -5,13 +5,16 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Llave extends ElementoCelda {
 	private boolean esMaestra;
 
-	public Llave(String nombre, Clip sonido, boolean esMaestra) throws IOException {
-		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")), sonido); //sonido?
+	public Llave(boolean esMaestra) throws IOException, UnsupportedAudioFileException {
+		super("Llave", ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")),
+				(Clip) AudioSystem.getAudioInputStream(Llave.class.getResourceAsStream("/audios/llave.wav"))); // sonido?
 		this.esMaestra = esMaestra;
 	}
 

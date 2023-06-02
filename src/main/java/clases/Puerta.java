@@ -6,14 +6,17 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
+import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Puerta extends ElementoCelda {
 	private Llave llave;
 	private ArrayList<String> material;
 
-	public Puerta(String nombre, Clip sonido, Llave llave, ArrayList<String> material) throws IOException {
-		super(nombre, ImageIO.read(new File(".\\src\\main\\java\\iconos\\puerta.jpg")), sonido); //sonido?
+	public Puerta(Llave llave, ArrayList<String> material) throws IOException, UnsupportedAudioFileException {
+		super("Puerta", ImageIO.read(new File(".\\src\\main\\java\\iconos\\puerta.jpg")),
+				(Clip) AudioSystem.getAudioInputStream(Puerta.class.getResourceAsStream("/audios/puerta.wav"))); // sonido?
 		this.llave = llave;
 		this.material = material;
 	}
