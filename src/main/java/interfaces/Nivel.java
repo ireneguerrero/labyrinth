@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -35,7 +34,8 @@ public class Nivel extends JPanel implements ActionListener {
 	private Ventana ventana;
 
 	public void ponerDibujoLabel(JLabel label, Laberinto l, byte posx, byte posy) {
-		if (l.getCeldas()[posx][posy].getClass().getName().equals(Muro.class)) {
+		System.out.println(posx + " : " + posy + "  " + l.getCeldas()[posx][posy].getClass());
+		if (l.getCeldas()[posx][posy].getClass().equals(Muro.class)) {
 			label.setIcon(new ImageIcon("/iconos/muro.jpg")); // ?
 
 		}
@@ -51,10 +51,11 @@ public class Nivel extends JPanel implements ActionListener {
 			} else if (((CeldaVacia) (l.getCeldas()[posx][posy])).getPuerta() != null) {
 				label.setIcon(new ImageIcon("./imagenes/puerta.jpg"));
 			} else {
-				label.setIcon((Icon) ((CeldaVacia) (l.getCeldas()[posx][posy])).getImagen());
+				// P
+				// Convertir este que falla de bufferedImage a icon
+				label.setIcon(((CeldaVacia) (l.getCeldas()[posx][posy])).getImagen());
 			}
 		}
-
 	}
 
 	public Nivel(Ventana v, Laberinto l) {
@@ -66,15 +67,16 @@ public class Nivel extends JPanel implements ActionListener {
 			e1.printStackTrace();
 		}
 		GridBagLayout gridBagLayout = new GridBagLayout();
-		gridBagLayout.columnWidths = new int[] { 137, 0, 0, 0, 0, 0 };
+		gridBagLayout.columnWidths = new int[] { 99, 0, 0, 0, 0, 0 };
 		gridBagLayout.rowHeights = new int[] { 71, 0, 0, 0, 0, 0, 0, 0 };
 		gridBagLayout.columnWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		gridBagLayout.rowWeights = new double[] { 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, Double.MIN_VALUE };
 		setLayout(gridBagLayout);
 
 		JLabel label00 = new JLabel("");
+		label00.setBackground(Color.RED);
 		ponerDibujoLabel(label00, l, (byte) 0, (byte) 0);
-
+		label00.setSize(50, 50);
 		GridBagConstraints gbc_label00 = new GridBagConstraints();
 		gbc_label00.insets = new Insets(0, 0, 5, 5);
 		gbc_label00.gridx = 0;
@@ -106,6 +108,7 @@ public class Nivel extends JPanel implements ActionListener {
 		add(label03, gbc_label03);
 
 		JLabel label04 = new JLabel("");
+		label04.setForeground(Color.LIGHT_GRAY);
 		ponerDibujoLabel(label04, l, (byte) 0, (byte) 4);
 		GridBagConstraints gbc_label04 = new GridBagConstraints();
 		gbc_label04.insets = new Insets(0, 0, 5, 0);
@@ -170,6 +173,7 @@ public class Nivel extends JPanel implements ActionListener {
 		add(label21, gbc_label21);
 
 		JLabel label22 = new JLabel("");
+		label22.setBackground(Color.GREEN);
 		ponerDibujoLabel(label22, l, (byte) 2, (byte) 2);
 		GridBagConstraints gbc_label22 = new GridBagConstraints();
 		gbc_label22.insets = new Insets(0, 0, 5, 5);
@@ -314,6 +318,7 @@ public class Nivel extends JPanel implements ActionListener {
 		add(label54, gbc_label54);
 
 		JLabel label60 = new JLabel("");
+		label60.setBackground(Color.CYAN);
 		ponerDibujoLabel(label60, l, (byte) 6, (byte) 0);
 		GridBagConstraints gbc_label60 = new GridBagConstraints();
 		gbc_label60.insets = new Insets(0, 0, 0, 5);
@@ -345,8 +350,10 @@ public class Nivel extends JPanel implements ActionListener {
 		gbc_label63.gridy = 6;
 		add(label63, gbc_label63);
 
-		JLabel label64 = new JLabel("");
+		JLabel label64 = new JLabel("a");
+		label64.setBackground(Color.MAGENTA);
 		ponerDibujoLabel(label64, l, (byte) 6, (byte) 4);
+
 		GridBagConstraints gbc_label64 = new GridBagConstraints();
 		gbc_label64.gridx = 4;
 		gbc_label64.gridy = 6;
