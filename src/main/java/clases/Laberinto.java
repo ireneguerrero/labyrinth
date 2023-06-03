@@ -21,6 +21,7 @@ public class Laberinto {
 			this.nivel = 1;
 			try {
 				Llave l=new Llave(true);
+				
 				this.celdas = new Celda[][] {
 																							  // salida
 						{ new Muro(), new Muro(), new Muro(),								  new Celda(), new Muro() },
