@@ -12,7 +12,7 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class ElementoCelda extends ElementoConNombreEImagen {
 	private Clip sonido;
 
-	public ElementoCelda(String nombre, BufferedImage imagen, String sonido) {
+	public ElementoCelda(String nombre, BufferedImage imagen, Clip sonido) {
 		super(nombre, imagen);
 		
 			try {
