@@ -9,22 +9,12 @@ import javax.sound.sampled.Clip;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Recompensa extends ElementoCelda {
-	private String tipo;
 	private byte puntos;
 
-	public Recompensa(String tipo, byte puntos) throws IOException, UnsupportedAudioFileException {
+	public Recompensa(byte puntos) throws IOException, UnsupportedAudioFileException {
 		super("Cofre", ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")),
 				(Clip) AudioSystem.getAudioInputStream(Recompensa.class.getResourceAsStream("/audios/recompensa.wav"))); // sonido?
-		this.tipo = tipo;
 		this.puntos = puntos;
-	}
-
-	public String getTipo() {
-		return tipo;
-	}
-
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 
 	public byte getPuntos() {
@@ -37,7 +27,7 @@ public class Recompensa extends ElementoCelda {
 
 	@Override
 	public String toString() {
-		return "Recompensa [tipo=" + tipo + ", puntos=" + puntos + "]";
+		return "Recompensa [untos=" + puntos + "]";
 	}
 
 }

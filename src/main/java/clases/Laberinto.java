@@ -20,14 +20,14 @@ public class Laberinto {
 			this.nivel = 1;
 			try {
 				this.celdas = new Celda[][] {
-																													// salida
-						{ new Muro(), new Muro(), new Muro(),										new Celda(), new Muro() },
-						{ new Muro(), new Celda(), new CeldaVacia(new Recompensa(null, (byte) 10)), new Celda(), new Muro() },
-						{ new Muro(), new Celda(), new Muro(),										new Muro(),  new Muro() },
-						{ new Muro(), new Celda(), new CeldaVacia(new Puerta(null, null)), 		 	new Celda(), new Muro() },
-						{ new Muro(), new Muro(), new Muro(), 										new Celda(), new Muro() },
-						{ new Muro(), new Celda(), new CeldaVacia(new Llave(true)),				 	new Celda(), new Muro() },
-						{ new Muro(), new Celda(), new Muro(), 										new Muro(),  new Muro() }
+																							  // salida
+						{ new Muro(), new Muro(), new Muro(),								  new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Recompensa((byte) 10)), new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new Muro(),								  new Muro(),  new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Puerta(null, null)), 	  new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Muro(), 								  new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new CeldaVacia(new Llave(true)),			  new Celda(), new Muro() },
+						{ new Muro(), new Celda(), new Muro(), 								  new Muro(),  new Muro() }
 									 // inicio
 				};
 			} catch (IOException | UnsupportedAudioFileException e) {
@@ -40,13 +40,13 @@ public class Laberinto {
 			try {
 				this.celdas = new Celda[][] {
 															
-						{ new Muro(), new Muro(), new Muro(), new Muro(), 									   new Muro() },
-						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 20)), new Celda() }, // salida
-						{ new Muro(), new Muro(), new Muro(), new Celda(),									   new Muro() },
-						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null)),		   new Muro() },
-						{ new Muro(), new Muro(), new Muro(), new Celda(),									   new Muro() },
-/*inicio*/				{ new Celda(), new Celda(), new CeldaVacia(new Llave(true)),			  new Celda(), new Muro() },
-						{ new Muro(), new Muro(), new Muro(), new Muro(), new Muro() }
+						{ new Muro(), new Muro(), new Muro(), new Muro(), 								 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Recompensa((byte) 20)), new Celda() }, // salida
+						{ new Muro(), new Muro(), new Muro(), new Celda(),								 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null)),	 new Muro() },
+						{ new Muro(), new Muro(), new Muro(), new Celda(),								 new Muro() },
+/*inicio*/				{ new Celda(), new Celda(), new CeldaVacia(new Llave(true)),		new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new Muro(), 								new Muro(),  new Muro() }
 						
 				};
 			} catch (IOException | UnsupportedAudioFileException e) {
@@ -62,7 +62,7 @@ public class Laberinto {
 						{ new Celda(), new Muro(), new Muro(),									   new Muro(),  new Muro() },
 						{ new Celda(), new Celda(), new CeldaVacia(new Puerta(null, null)),		   new Celda(), new Muro() },
 						{ new Muro(), new Muro(), new Muro(), 									   new Celda(), new Muro() },
-						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 30)), new Celda(), new Muro() },
+						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa((byte) 30)), 	   new Celda(), new Muro() },
 						{ new Muro(), new Muro(), new Celda(), 									   new Muro(),  new Muro() },
 						{ new Muro(), new Muro(), new Celda(), new CeldaVacia(new Llave(true)),					new Muro() },
 						{ new Muro(), new Muro(), new Muro(), new Celda(),										new Muro() }
@@ -78,7 +78,7 @@ public class Laberinto {
 			try {
 				this.celdas = new Celda[][] {
 												// salida
-						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa(null, (byte) 40)), new Muro(), new Muro() },
+						{ new Muro(), new Muro(), new CeldaVacia(new Recompensa((byte) 40)), 	   new Muro(), new Muro() },
 						{ new Muro(), new Muro(), new CeldaVacia(new Puerta(null, null)), 		   new Muro(), new Muro() },
 						{ new Muro(), new Celda(), new Celda(), new Celda(), 								   new Muro() },
 						{ new Muro(), new Celda(), new Muro(), new Celda(), 								   new Muro() },
