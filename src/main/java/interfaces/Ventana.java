@@ -23,15 +23,15 @@ public class Ventana extends JFrame {
 	public Ventana() throws UnsupportedAudioFileException, IOException, LineUnavailableException {
 		this.setSize(700, 500); // tamaño de la ventana
 		this.setTitle("Labyrinth"); // título de la ventana
-		AudioInputStream audioInputStream = AudioSystem
-				.getAudioInputStream(Ventana.class.getResourceAsStream("/audios/musica_fondo.wav")); // ?
+//		AudioInputStream audioInputStream = AudioSystem
+//				.getAudioInputStream(Ventana.class.getResourceAsStream("./imagenes/audios/musica_fondo.wav")); // ?
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // si se cierra la ventana termina el programa
 		this.setLocationRelativeTo(null); // se pone la ventana centrada
 		this.setContentPane(new PantallaJugador(this));
 
 		// Obtén una instancia del Clip
-		clip = AudioSystem.getClip();
-		clip.open(audioInputStream);
+//		clip = AudioSystem.getClip();
+//		clip.open(audioInputStream);
 
 		// Configura un botón en la ventana para reproducir el sonido
 		JButton botonReproducir = new JButton("Reproducir");

@@ -8,12 +8,13 @@ import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 
 public class Llave extends ElementoCelda {
 	private boolean esMaestra;
 
 	public Llave(boolean esMaestra) throws IOException, UnsupportedAudioFileException {
-		super("Llave", ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")),"/audios/llave.wav"); // sonido?
+		super("Llave", new ImageIcon("./imagenes/iconos/llave.png"),"/audios/llave.wav"); // sonido?
 		this.esMaestra = esMaestra;
 	}
 

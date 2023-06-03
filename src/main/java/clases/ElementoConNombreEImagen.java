@@ -1,15 +1,14 @@
 package clases;
 
-import java.awt.image.BufferedImage;
+import javax.swing.ImageIcon;
 
 import exceptions.NombreConNumerosException;
 
-
 public class ElementoConNombreEImagen {
 	private String nombre;
-	private BufferedImage imagen;
+	private ImageIcon imagen;
 
-	public ElementoConNombreEImagen(String nombre, BufferedImage imagen) {
+	public ElementoConNombreEImagen(String nombre, ImageIcon imagen) {
 		super();
 		this.nombre = nombre;
 		this.imagen = imagen;
@@ -29,11 +28,11 @@ public class ElementoConNombreEImagen {
 		this.nombre = nombre;
 	}
 
-	public BufferedImage getImagen() {
+	public ImageIcon getImagen() {
 		return imagen;
 	}
 
-	public void setImagen(BufferedImage imagen) {
+	public void setImagen(ImageIcon imagen) {
 		this.imagen = imagen;
 	}
 

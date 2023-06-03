@@ -8,12 +8,13 @@ import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
+import javax.swing.ImageIcon;
 
 public class ElementoCelda extends ElementoConNombreEImagen {
 	private Clip sonido;
 	private String rutaSonido;
 
-	public ElementoCelda(String nombre, BufferedImage imagen, String sonido) {
+	public ElementoCelda(String nombre, ImageIcon imagen, String sonido) {
 		super(nombre, imagen);
 		try {
 			this.sonido = AudioSystem.getClip();

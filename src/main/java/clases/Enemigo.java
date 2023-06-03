@@ -3,11 +3,12 @@ package clases;
 import java.awt.image.BufferedImage;
 
 import javax.sound.sampled.Clip;
+import javax.swing.ImageIcon;
 
 public class Enemigo extends Personaje {
 	private Clip sonido;
 
-	public Enemigo(String nombre, BufferedImage imagen, byte vida, boolean estado, byte poder, byte daño, byte fuerza,
+	public Enemigo(String nombre, ImageIcon imagen, byte vida, boolean estado, byte poder, byte daño, byte fuerza,
 			byte inteligencia, byte agilidad, Clip sonido) {
 		super(nombre, imagen, vida, estado, poder, daño, fuerza, inteligencia, agilidad);
 		this.sonido = sonido;
