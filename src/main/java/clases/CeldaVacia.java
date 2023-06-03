@@ -12,6 +12,15 @@ public class CeldaVacia extends Celda {
 	private Recompensa recompensa;
 	private ElementoCelda ec;
 
+	public CeldaVacia(ImageIcon imagen, Llave llave, Puerta puerta, Recompensa recompensa, ElementoCelda ec)
+			throws IOException {
+		super(imagen);
+		this.llave = llave;
+		this.puerta = puerta;
+		this.recompensa = recompensa;
+		this.ec = ec;
+	}
+
 	public CeldaVacia(ElementoCelda ec) throws IOException {
 		super(new ImageIcon("./imagenes/iconos/camino.jpg"));
 		this.ec = ec;
@@ -63,9 +72,17 @@ public class CeldaVacia extends Celda {
 		this.recompensa = recompensa;
 	}
 
+	public ElementoCelda getEc() {
+		return ec;
+	}
+
+	public void setEc(ElementoCelda ec) {
+		this.ec = ec;
+	}
+
 	@Override
 	public String toString() {
-		return "CeldaVacia [llave=" + llave + ", puerta=" + puerta + ", recompensa=" + recompensa + "]";
+		return "CeldaVacia [llave=" + llave + ", puerta=" + puerta + ", recompensa=" + recompensa + ", ec=" + ec + "]";
 	}
 
 }
