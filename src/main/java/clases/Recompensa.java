@@ -13,9 +13,9 @@ public class Recompensa extends ElementoCelda {
 	private byte puntos;
 
 	public Recompensa(byte puntos) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
-		super("Cofre", ImageIO.read(new File(".\\src\\main\\java\\iconos\\cofre.png")), "/audios/recompensa.wav"); // sonido?
+		super("Cofre", ImageIO.read(new File("./imagenes/iconos/cofre.png")), "./imagenes/audios/recompensa.wav"); // sonido?
 		this.puntos = puntos;
-		
+
 	}
 
 	public byte getPuntos() {
@@ -28,7 +28,7 @@ public class Recompensa extends ElementoCelda {
 
 	@Override
 	public String toString() {
-		return "Recompensa [untos=" + puntos + "]";
+		return "Recompensa [puntos=" + puntos + "]";
 	}
 
 }

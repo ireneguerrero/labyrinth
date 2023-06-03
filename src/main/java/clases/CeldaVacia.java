@@ -1,29 +1,34 @@
 package clases;
 
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+
 public class CeldaVacia extends Celda {
 	private Llave llave;
 	private Puerta puerta;
 	private Recompensa recompensa;
 
-	public CeldaVacia(Llave llave, Puerta puerta, Recompensa recompensa) {
-		super();
+	public CeldaVacia(Llave llave, Puerta puerta, Recompensa recompensa) throws IOException {
+		super(ImageIO.read(new File("./imagenes/iconos/camino.jpg")));
 		this.llave = llave;
 		this.puerta = puerta;
 		this.recompensa = recompensa;
 	}
 
-	public CeldaVacia(Llave llave) {
-		super();
+	public CeldaVacia(Llave llave) throws IOException {
+		super(ImageIO.read(new File("./imagenes/iconos/cofre.png")));
 		this.llave = llave;
 	}
 
-	public CeldaVacia(Puerta puerta) {
-		super();
+	public CeldaVacia(Puerta puerta) throws IOException {
+		super(ImageIO.read(new File("./imagenes/iconos/puerta.jpg")));
 		this.puerta = puerta;
 	}
 
-	public CeldaVacia(Recompensa recompensa) {
-		super();
+	public CeldaVacia(Recompensa recompensa) throws IOException {
+		super(ImageIO.read(new File("./imagenes/iconos/cofre.png")));
 		this.recompensa = recompensa;
 	}
 

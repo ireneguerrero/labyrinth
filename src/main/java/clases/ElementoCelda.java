@@ -12,15 +12,15 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 public class ElementoCelda extends ElementoConNombreEImagen {
 	private Clip sonido;
 
-	public ElementoCelda(String nombre, BufferedImage imagen, Clip sonido) {
+	public ElementoCelda(String nombre, BufferedImage imagen, String string) {
 		super(nombre, imagen);
-		
-			try {
-				this.sonido = AudioSystem.getClip();
-			} catch (LineUnavailableException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
+		try {
+			this.sonido = AudioSystem.getClip();
+		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public Clip getSonido() {
