@@ -14,8 +14,7 @@ public class Puerta extends ElementoCelda {
 	private ArrayList<String> material;
 
 	public Puerta(Llave llave, ArrayList<String> material) throws IOException, UnsupportedAudioFileException {
-		super("Puerta", ImageIO.read(new File(".\\src\\main\\java\\iconos\\puerta.jpg")),
-				(Clip) AudioSystem.getAudioInputStream(Puerta.class.getResourceAsStream("/audios/puerta.wav"))); // sonido?
+		super("Puerta", ImageIO.read(new File(".\\src\\main\\java\\iconos\\puerta.jpg")),"/audios/puerta.wav"); // sonido?
 		this.llave = llave;
 		this.material = material;
 	}

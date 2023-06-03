@@ -71,7 +71,7 @@ public class Ventana extends JFrame {
 		this.getContentPane().setVisible(true);
 	}
 
-	public void irALaberinto(Class<?> clase, byte laberinto) throws IOException {
+	public void irALaberinto(Class<?> clase, byte laberinto) throws IOException, LineUnavailableException {
 		this.setContentPane(new Nivel(this, new Laberinto(laberinto)));
 		if (clase.equals(Nivel.class)) {
 			this.setContentPane(new Nivel(this, new Laberinto((byte) 1)));

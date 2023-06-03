@@ -3,6 +3,7 @@ package clases;
 import java.io.IOException;
 import java.util.Arrays;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class Laberinto {
@@ -14,7 +15,7 @@ public class Laberinto {
 		this.nivel = nivel;
 	}
 
-	public Laberinto(byte numero) throws IOException {
+	public Laberinto(byte numero) throws IOException, LineUnavailableException {
 		switch (numero) {
 		case 1:
 			this.nivel = 1;

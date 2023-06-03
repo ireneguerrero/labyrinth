@@ -13,8 +13,7 @@ public class Llave extends ElementoCelda {
 	private boolean esMaestra;
 
 	public Llave(boolean esMaestra) throws IOException, UnsupportedAudioFileException {
-		super("Llave", ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")),
-				(Clip) AudioSystem.getAudioInputStream(Llave.class.getResourceAsStream("/audios/llave.wav"))); // sonido?
+		super("Llave", ImageIO.read(new File(".\\src\\main\\java\\iconos\\llave.png")),"/audios/llave.wav"); // sonido?
 		this.esMaestra = esMaestra;
 	}
 

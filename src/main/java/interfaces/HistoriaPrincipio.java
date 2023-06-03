@@ -7,6 +7,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 
+import javax.sound.sampled.LineUnavailableException;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -21,17 +22,18 @@ public class HistoriaPrincipio extends JPanel {
 	private static Ventana ventana;
 
 	private String[] historia = { "Nuestro querido capitán de los Sombreros de Paja, Luffy",
-			"Ha caído en manos de un usuario de la fruta Rabi Rabi no Mi",
-			"Esta fruta lleva a los afectados a un laberinto infernal",
-			"En el que tendrán que luchar con sus enemigos más fuertes para poder salir.",
-			"Como este usuario es benevolente, Luffy tendrá varias ayudas en el camino.",
-			"Pero no todo es de color rosa",
-			"Luffy tendrá que volver a pasar por las batallas que más le costaron para poder salir.",
-			"No tendrá la ayuda de sus preciados Nakamas por el camino.",
-			"¿Podrá Luffy superar los laberintos y llegar al final?",
-			"¿O se quedará atrapado para siempre en ellos y no podrá cumplir su sueño?",
-			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?", "¿O tienes miedo?",
-			"¿Preparado?", "Pulsa continuar y demuestra de qué eres capaz." };
+//			"Ha caído en manos de un usuario de la fruta Rabi Rabi no Mi",
+//			"Esta fruta lleva a los afectados a un laberinto infernal",
+//			"En el que tendrán que luchar con sus enemigos más fuertes para poder salir.",
+//			"Como este usuario es benevolente, Luffy tendrá varias ayudas en el camino.",
+//			"Pero no todo es de color rosa",
+//			"Luffy tendrá que volver a pasar por las batallas que más le costaron para poder salir.",
+//			"No tendrá la ayuda de sus preciados Nakamas por el camino.",
+//			"¿Podrá Luffy superar los laberintos y llegar al final?",
+//			"¿O se quedará atrapado para siempre en ellos y no podrá cumplir su sueño?",
+//			"¿Eres capaz de ayudar al futuro Rey de los Piratas en su lucha hacia la libertad?", "¿O tienes miedo?",
+//			"¿Preparado?", "Pulsa continuar y demuestra de qué eres capaz." 
+			};
 	private int indiceParteHistoria = 0;
 	private boolean historiaCompletada = false;
 
@@ -65,7 +67,7 @@ public class HistoriaPrincipio extends JPanel {
 				if (historiaCompletada) {
 					try {
 						ventana.irALaberinto(Nivel.class, (byte)1);
-					} catch (IOException e1) {
+					} catch (IOException | LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}
