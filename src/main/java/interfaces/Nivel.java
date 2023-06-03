@@ -5,6 +5,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.imageio.ImageIO;
 import javax.swing.ButtonGroup;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -38,19 +39,24 @@ public class Nivel extends JPanel implements ActionListener {
 			label.setIcon(new ImageIcon("/iconos/muro.jpg")); // ?
 
 		}
-		if (l.getCeldas()[posx][posy].getClass().getName().equals(Celda.class)) {
-			if (((CeldaVacia) (l.getCeldas()[posx][posy])).getLlave() != null) {
-				label.setIcon(new ImageIcon("/iconos/llave.png"));
-				;
-			}
-			if (((CeldaVacia) (l.getCeldas()[posx][posy])).getRecompensa() != null) {
-				label.setIcon(new ImageIcon("/iconos/cofre.png"));
-			}
-			if (((CeldaVacia) (l.getCeldas()[posx][posy])).getPuerta() != null) {
-				label.setIcon(new ImageIcon("/iconos/puerta.jpg"));
-			}
+		if (l.getCeldas()[posx][posy].getClass().equals(Celda.class)) {
 
 		}
+		if (l.getCeldas()[posx][posy].getClass().equals(CeldaVacia.class)) {
+			if (((CeldaVacia) (l.getCeldas()[posx][posy])).getLlave() != null) {
+				label.setIcon(new ImageIcon("./iconos/llave.png"));
+				;
+			} else if (((CeldaVacia) (l.getCeldas()[posx][posy])).getRecompensa() != null) {
+				label.setIcon(new ImageIcon("./iconos/cofre.png"));
+			} else if (((CeldaVacia) (l.getCeldas()[posx][posy])).getPuerta() != null) {
+				label.setIcon(new ImageIcon("./imagenes/puerta.jpg"));
+			} else {
+				// P
+				// Convertir este que falla de bufferedImage a icon
+				label.setIcon((Icon) ((CeldaVacia) (l.getCeldas()[posx][posy])).getImagen());
+			}
+		}
+
 	}
 
 	public Nivel(Ventana v, Laberinto l) {
