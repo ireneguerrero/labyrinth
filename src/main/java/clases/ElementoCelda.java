@@ -11,13 +11,23 @@ import javax.sound.sampled.UnsupportedAudioFileException;
 
 public class ElementoCelda extends ElementoConNombreEImagen {
 	private Clip sonido;
+	private String rutaSonido;
 
-	public ElementoCelda(String nombre, BufferedImage imagen, String string) {
+	public ElementoCelda(String nombre, BufferedImage imagen, String sonido) {
 		super(nombre, imagen);
-
 		try {
 			this.sonido = AudioSystem.getClip();
 		} catch (LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			rutaSonido = sonido;
+			e.printStackTrace();
+		}
+	}
+
+	public void sonar() {
+		try {
+			this.sonido.open(AudioSystem.getAudioInputStream(new File(rutaSonido)));
+		} catch (LineUnavailableException | IOException | UnsupportedAudioFileException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

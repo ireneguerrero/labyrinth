@@ -51,8 +51,6 @@ public class Nivel extends JPanel implements ActionListener {
 			} else if (((CeldaVacia) (l.getCeldas()[posx][posy])).getPuerta() != null) {
 				label.setIcon(new ImageIcon("./imagenes/puerta.jpg"));
 			} else {
-				// P
-				// Convertir este que falla de bufferedImage a icon
 				label.setIcon((Icon) ((CeldaVacia) (l.getCeldas()[posx][posy])).getImagen());
 			}
 		}
