@@ -5,6 +5,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -62,7 +63,12 @@ public class HistoriaPrincipio extends JPanel {
 			@Override
 			public void mouseClicked(MouseEvent e) {
 				if (historiaCompletada) {
-					ventana.irALaberinto((byte)1);
+					try {
+						ventana.irALaberinto(Nivel.class, (byte)1);
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				}
 			}
 		});

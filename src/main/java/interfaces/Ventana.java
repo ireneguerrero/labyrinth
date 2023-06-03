@@ -24,33 +24,31 @@ public class Ventana extends JFrame {
 		this.setSize(700, 500); // tamaño de la ventana
 		this.setTitle("Labyrinth"); // título de la ventana
 		AudioInputStream audioInputStream = AudioSystem
-				.getAudioInputStream(Ventana.class.getResourceAsStream("/audios/musica_fondo.wav")); //?
+				.getAudioInputStream(Ventana.class.getResourceAsStream("/audios/musica_fondo.wav")); // ?
 		this.setDefaultCloseOperation(EXIT_ON_CLOSE); // si se cierra la ventana termina el programa
 		this.setLocationRelativeTo(null); // se pone la ventana centrada
 		this.setContentPane(new PantallaJugador(this));
-		
-		
-		 // Obtén una instancia del Clip
-        clip = AudioSystem.getClip();
-        clip.open(audioInputStream);
 
-        // Configura un botón en la ventana para reproducir el sonido
-        JButton botonReproducir = new JButton("Reproducir");
-        botonReproducir.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Reproduce el sonido
-                clip.setFramePosition(0); // Reinicia la reproducción desde el principio
-                clip.start();
-            }
-        });
+		// Obtén una instancia del Clip
+		clip = AudioSystem.getClip();
+		clip.open(audioInputStream);
 
-        // Agrega el botón a la ventana
-        getContentPane().add(botonReproducir);
+		// Configura un botón en la ventana para reproducir el sonido
+		JButton botonReproducir = new JButton("Reproducir");
+		botonReproducir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				// Reproduce el sonido
+				clip.setFramePosition(0); // Reinicia la reproducción desde el principio
+				clip.start();
+			}
+		});
 
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setSize(200, 100);
-        setVisible(true);
-        this.setVisible(true); // tiene que ser la última línea del constructor, se hace visible la ventana
+		// Agrega el botón a la ventana
+		getContentPane().add(botonReproducir);
+
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setVisible(true);
+		this.setVisible(true); // tiene que ser la última línea del constructor, se hace visible la ventana
 	}
 
 	public void cambiarAPantalla(Class<?> clase) {
@@ -60,18 +58,6 @@ public class Ventana extends JFrame {
 		}
 		if (clase.equals(HistoriaPrincipio.class)) {
 			this.setContentPane(new HistoriaPrincipio(this));
-		}
-		if (clase.equals(BossLvl1.class)) {
-			this.setContentPane(new BossLvl1(this));
-		}
-		if (clase.equals(BossLvl2.class)) {
-			this.setContentPane(new BossLvl2(this));
-		}
-		if (clase.equals(BossLvl3.class)) {
-			this.setContentPane(new BossLvl3(this));
-		}
-		if (clase.equals(BossLvl4.class)) {
-			this.setContentPane(new BossLvl4(this));
 		}
 		if (clase.equals(HistoriaFinal.class)) {
 			this.setContentPane(new HistoriaFinal(this));
@@ -85,7 +71,10 @@ public class Ventana extends JFrame {
 		this.getContentPane().setVisible(true);
 	}
 
-	public void irALaberinto(byte laberinto) throws IOException {
+	public void irALaberinto(Class<?> clase, byte laberinto) throws IOException {
 		this.setContentPane(new Nivel(this, new Laberinto(laberinto)));
+		if (clase.equals(Nivel.class)) {
+			this.setContentPane(new Nivel(this, new Laberinto((byte) 1)));
+		}
 	}
 }
