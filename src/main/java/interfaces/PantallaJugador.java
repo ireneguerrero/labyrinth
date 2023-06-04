@@ -2,16 +2,10 @@ package interfaces;
 
 import javax.swing.JPanel;
 import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.GridBagLayout;
-import java.awt.HeadlessException;
 import java.awt.Image;
-import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -26,7 +20,6 @@ import exceptions.NombreConNumerosException;
 import utils.DAO;
 
 import javax.swing.JTextField;
-import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
 import java.awt.event.MouseAdapter;
@@ -65,8 +58,12 @@ public class PantallaJugador extends JPanel {
 		btnEmpezar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				String usuario = textNombre.getText();
+				HashMap<String, Object> columnas = new HashMap<>();
+				columnas.put("nombre", usuario);
 				try {
-					String usuario = textNombre.getText();
+					DAO.insertar("usuario", columnas);
+					ventana.jugador = new Jugador(usuario);
 					validarNombre();
 
 					if (usuario.isEmpty()) {
@@ -77,7 +74,7 @@ public class PantallaJugador extends JPanel {
 
 					ventana.jugador = new Jugador(usuario);
 					ventana.cambiarAPantalla(HistoriaPrincipio.class);
-				} catch (NombreConNumerosException | IOException e2) {
+				} catch (NombreConNumerosException | IOException | SQLException e2) {
 					e2.printStackTrace();
 					JOptionPane.showMessageDialog(ventana, "El nombre no debe contener números", "Error",
 							JOptionPane.ERROR_MESSAGE);
