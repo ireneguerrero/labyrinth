@@ -25,6 +25,8 @@ import java.awt.Insets;
 public class Nivel extends JPanel implements ActionListener {
 	private Ventana ventana;
 
+	//por qué entra dos veces el laberinto
+	//nombre de usuario que entre en la bbdd
 	public void ponerDibujoLabel(JLabel label, Laberinto l, byte posx, byte posy) {
 		System.out.println(posx + " : " + posy + "  " + l.getCeldas()[posx][posy].getClass());
 		if (l.getCeldas()[posx][posy].getClass().equals(Muro.class)) {
@@ -377,6 +379,8 @@ public class Nivel extends JPanel implements ActionListener {
 		gbc_label64.gridx = 4;
 		gbc_label64.gridy = 6;
 		add(label64, gbc_label64);
+		this.setVisible(false);
+		this.setVisible(true);
 
 	}
 
