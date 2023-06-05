@@ -66,7 +66,7 @@ public class HistoriaPrincipio extends JPanel {
 			public void mouseClicked(MouseEvent e) {
 				if (historiaCompletada) {
 					try {
-						ventana.irALaberinto(ventana.getClass(), (byte)2);
+						ventana.irALaberinto(ventana.getClass(), (byte)1);
 					} catch (IOException | LineUnavailableException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
